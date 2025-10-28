@@ -129,7 +129,7 @@ GIT)</td>
       <div class="footerContent">
             <div><p class="copyright">
             2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../index.html">Véronique Grué.</a> Fecha de Actualización :
-                <time datetime="2025-10-20"></time> 20-10-2025 </address>
+                <time datetime="2025-10-28"></time> 28-10-2025 </address>
           </div>
             
       </div>
