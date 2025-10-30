@@ -83,6 +83,7 @@ td{
 .texto{
    padding-left: 0.5rem; 
    font-size: 18px;
+   padding-right: 0.5rem;
 }
 .span{
     font-size: 12px;
