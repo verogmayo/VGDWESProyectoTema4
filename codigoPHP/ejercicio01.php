@@ -23,10 +23,10 @@
                 
                 //  https://www.php.net/manual/es/pdo.connections.php
                 /** @var $dns (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
-                /** @var string $usuarioDb : usuario de la base de datos. */
+                /** @var string $usuarioDb : usuario de la base de datos. dbname=DBVGDWESProyectoTema4*/
                 /** @var string $pswd Contraseña del usuario de la base de datos. */
                 
-                $dns='mysql:host=192.168.0.22;dbname=DBVGDWESProyectoTema4';
+                $dns='mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
                 $usuarioDb='adminsql';     
                 $pswd='paso';
                 //Establecer la conexión en la base de datos

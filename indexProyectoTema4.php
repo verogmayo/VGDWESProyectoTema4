@@ -13,11 +13,15 @@
     </head>
     <body>
         <header class="header">
+            <a href="../VGDWESProyectoTema4/indexProyectoTema4.php">volver</a>
             <h1>PROYECTO TEMA 4</h1>
         </header>
         <main>
             <section>
                 <h2>EJERCICIOS DEL TEMA 4</h2>
+                
+              
+                
                 <table>
                     <tr>
                         <th rowspan="2">Nº</th>
@@ -32,12 +36,13 @@
                         <th>Ejecutar</th>
                         <th>Mostrar</th>
                     </tr>
+
                     <tr>
                         <th>0</th>
                         <!-- <span class="span">text</span> -->
                         <td class="texto">Creación de la base de Datos Departamento. </td>
                         <td class="iconos"><a href="codigoPHP/ejercicio00.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio00.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
@@ -48,7 +53,7 @@
 
                         <td class="texto">Conexión a la base de datos con la cuenta usuario y tratamiento de errores. </td>
                         <td class="iconos"><a href="codigoPHP/ejercicio01.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio01.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
@@ -56,18 +61,17 @@
                         <th>2</th>
                         <td class="texto">Mostrar el contenido de la tabla Departamento y el número de registros.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio02.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio02.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
-                    <tr>
-                        <th>3</th>
-                        <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
-                            control de errores.</td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                    <th>3</th>
+                    <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
+                        control de errores.</td>
+                                            <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                                            <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                                            <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                                            <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>4</th>

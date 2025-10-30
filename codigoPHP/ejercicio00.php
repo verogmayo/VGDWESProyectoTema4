@@ -24,7 +24,7 @@
                 /** @var $dsn (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
                 /** @var string $usuarioDb : usuario de la base de datos. */
                 /** @var string $pswd Contraseña del usuario de la base de datos. */
-                $dsn = 'mysql:host=192.168.0.22;dbname=prueba';
+                $dsn = 'mysql:host=10.199.10.49;dbname=mysql';
                 $usuarioDb = 'adminsql';
                 $pswd = 'paso';
                 //Establecer la conexión en la base de datos
@@ -45,7 +45,7 @@
                 // Se crea la tabla
                 $miDB->exec('CREATE TABLE IF NOT EXISTS T_02Departamento (
                      T02_CodDepartamento varchar(3) PRIMARY KEY, 
-                     T02_FechaCreacionDepartamento date ,
+                     T02_FechaCreacionDepartamento datetime ,
                      T02_FechaBajaDepartamento date,
                      T02_DescDepartamento varchar(255),
                      T02_VolumenDeNegocio float)Engine=innodb');
