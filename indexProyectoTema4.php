@@ -20,8 +20,32 @@
             <section>
                 <h2>EJERCICIOS DEL TEMA 4</h2>
                 
-              
-                
+                <h3>SCRIPTS DE LA BASE DE DATOS</h3>
+                <table>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Descriptción</th>
+                        <th>Mostrar</th>
+                        
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td class="texto">Creación de la base de Datos y del usuario. </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraCreaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>
+
+                     <tr>
+                        <th>2</th>
+                        <td class="texto">Carga de la base de Datos. </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraCargaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>
+                     <tr>
+                        <th>3</th>
+                        <td class="texto">Borrado de la base de Datos. </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraBorraDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>
+                </table>
+
                 <table>
                     <tr>
                         <th rowspan="2">Nº</th>
@@ -68,46 +92,46 @@
                     <th>3</th>
                     <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
                         control de errores.</td>
-                                            <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                            <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                            <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                            <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>4</th>
                         <td class="texto">Formulario de búsqueda de departamentos por descripción  <span class="span">(por una parte del campo
-                                DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span> .</td>
-                                                  <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                    <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                                    <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                    <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span> .</td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>5</th>
                         <td class="texto">Página web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones
                             insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.
-                            </td><td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                                <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        </td><td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>6</th>
                         <td class="texto">Página web que cargue registros en la tabla Departamento desde un array departamentosnuevos
                             utilizando una consulta preparada.</td>
-                                              <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                                <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>7</th>
                         <td class="texto">Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
                             Departamento de nuestra base de datos.</td>
-                                               <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                                <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>8</th>
@@ -121,10 +145,10 @@
                         <th>9</th>
                         <td class="texto">Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio
                             GIT)</td>
-                                              <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                                                <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                                                <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>                </tr>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>                </tr>
 
                     <tr>
                         <th>10</th>

@@ -50,6 +50,12 @@ h2{
     text-align:  center;
     padding: 1rem;
 }
+h3{
+    text-align: center;
+    padding: 0.5rem;
+    color: blue;
+}
+
 .proyecto{
   width: 70%;
   border: 2px solid var(--colorTabla);
@@ -63,6 +69,7 @@ h2{
 table{
     border: 2px solid black;
     border-collapse: collapse;
+    margin-bottom: 15px;
 }
 
 th{

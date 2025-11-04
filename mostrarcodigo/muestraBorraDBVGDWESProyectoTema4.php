@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Véro Grué - ProyectoTema4 muestraEjercicio01</title>
+    <title>Véro Grué - ProyectoTema4 muestraBorraDBVGDWESProyectoTema4</title>
     <link rel="stylesheet" href="../webroot/css/styleEjercicios.css">
 </head>
 <body>
     <header class="header">
          <a href="../indexProyectoTema4.php">volver</a>
-        <h1>Muestra Ejercicio 01</h1>
+        <h1>Muestra muestraBorraDBVGDWESProyectoTema4</h1>
     </header>
     <main>
         <section>
             <?php 
-     highlight_file('../codigoPHP/ejercicio01.php');
+     highlight_file('../scriptDB/BorraDBVGDWESProyectoTema4.sql');
     ?>
         </section>
         
@@ -24,7 +24,7 @@
       <div class="footerContent">
             <div><p class="copyright">
             2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../indexProyectoTema3.php">Véronique Grué.</a> Fecha de Actualización :
-                <time datetime="2025-10-30"></time> 30-10-2025 </address>
+                <time datetime="2025-10-02"></time> 02-10-2025 </address>
           </div>
             
           </div>

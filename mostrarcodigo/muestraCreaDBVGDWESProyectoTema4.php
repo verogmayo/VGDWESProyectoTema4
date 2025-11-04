@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Véro Grué - ProyectoTema4 muestraEjercicio01</title>
+    <title>Véro Grué - ProyectoTema4 CreaDBVGDWESProyectoTema4</title>
     <link rel="stylesheet" href="../webroot/css/styleEjercicios.css">
 </head>
 <body>
     <header class="header">
          <a href="../indexProyectoTema4.php">volver</a>
-        <h1>Muestra Ejercicio 01</h1>
+        <h1>Muestra CreaDBVGDWESProyectoTema4</h1>
     </header>
     <main>
         <section>
             <?php 
-     highlight_file('../codigoPHP/ejercicio01.php');
+     highlight_file('../scriptDB/CreaDBVGDWESProyectoTema4.sql');
     ?>
         </section>
         

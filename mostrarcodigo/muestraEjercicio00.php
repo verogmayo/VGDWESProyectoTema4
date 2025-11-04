@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Véro Grué - ProyectoTema3 muestraEjercicio00</title>
+    <title>Véro Grué - ProyectoTema4 muestraEjercicio00</title>
     <link rel="stylesheet" href="../webroot/css/styleEjercicios.css">
 </head>
 <body>
     <header class="header">
+         <a href="../indexProyectoTema4.php">volver</a>
         <h1>Muestra Ejercicio 00</h1>
     </header>
     <main>
@@ -23,8 +24,8 @@
       <div class="footerContent">
             <div><p class="copyright">
             2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../indexProyectoTema3.php">Véronique Grué.</a> Fecha de Actualización :
-                <time datetime="2025-10-02"></time> 02-10-2025 </address>
-          </p></div>
+                <time datetime="2025-10-30"></time> 30-10-2025 </address>
+          </div>
             
           </div>
           
