@@ -24,9 +24,29 @@
                 /** @var $dsn (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
                 /** @var string $usuarioDb : usuario de la base de datos. */
                 /** @var string $pswd Contraseña del usuario de la base de datos. */
-                $dsn = 'mysql:host=10.199.10.49;dbname=mysql';
-                $usuarioDb = 'adminsql';
+                //$dsn = 'mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
+                $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
+                $usuarioDb = 'userVGDWESProyectoTema4';
                 $pswd = 'paso';
+                
+                
+                //Atributos de la conexión. https://www.php.net/manual/es/pdo.getattribute.php
+                $aAtrConexion = [
+                PDO::ATTR_AUTOCOMMIT,
+                PDO::ATTR_CASE,
+                PDO::ATTR_CLIENT_VERSION,
+                PDO::ATTR_CONNECTION_STATUS,
+                PDO::ATTR_DRIVER_NAME,
+                PDO::ATTR_ERRMODE,
+                PDO::ATTR_ORACLE_NULLS,
+                PDO::ATTR_PERSISTENT,
+                PDO::ATTR_PREFETCH,
+                PDO::ATTR_SERVER_INFO,
+                PDO::ATTR_SERVER_VERSION,
+                PDO::ATTR_TIMEOUT,
+                ];
+                
+                
                 //Establecer la conexión en la base de datos
                 $miDB = new PDO($dsn, $usuarioDb, $pswd);
                 // https://www.php.net/manual/es/pdo.error-handling.php
@@ -36,27 +56,52 @@
                 } else {
                     echo'Error de conexión';
                 }
+                
+                echo '<h2>Conexión con la base de datos sin errores</h2>';
+                try {
+                    $miDB;
+                    echo'Conexion establecida con exito<br></br>';
+                    echo'<h3>Atributos de la conexión</h3>';
+                    foreach ($aAtrConexion as $atributo) {
+                        echo $atributo;
+                        echo '';
+                    }
+                } catch (Exception $exc) {
+                    echo $exc->getTraceAsString();
+                }
 
-                // Se crea la base de datos
-                $miDB->exec('DROP DATABASE IF EXISTS DBVGDWESProyectoTema4');
-                $miDB->exec('CREATE DATABASE IF  NOT EXISTS DBVGDWESProyectoTema4  CHARACTER SET utf8 COLLATE utf8_spanish_ci');
-                $miDB->exec('USE DBVGDWESProyectoTema4');
 
-                // Se crea la tabla
-                $miDB->exec('CREATE TABLE IF NOT EXISTS T_02Departamento (
-                     T02_CodDepartamento varchar(3) PRIMARY KEY, 
-                     T02_FechaCreacionDepartamento datetime ,
-                     T02_FechaBajaDepartamento date,
-                     T02_DescDepartamento varchar(255),
-                     T02_VolumenDeNegocio float)Engine=innodb');
-                //Se inserta en la tabla creada
-                $miDB->exec("INSERT INTO T_02Departamento (T02_CodDepartamento,T02_FechaCreacionDepartamento,T02_FechaBajaDepartamento,T02_DescDepartamento,T02_VolumenDeNegocio)
-                            VALUES 
-                               ('AUT','2024-10-23',NULL,'Departamento de Automoción',1285.50),
-                               ('AER','2024-11-23',NULL,'Departamento de Aeronautica',2285.50),
-                               ('DEF','2024-12-23',NULL,'Departamento de Defensa',3285.50)");
 
-                unset($miDB);
+                //Se cierra la conexion
+                 unset($miDB);
+                
+                
+                
+                
+                
+                
+                
+                
+//                // Se crea la base de datos
+//                $miDB->exec('DROP DATABASE IF EXISTS DBVGDWESProyectoTema4');
+//                $miDB->exec('CREATE DATABASE IF  NOT EXISTS DBVGDWESProyectoTema4  CHARACTER SET utf8 COLLATE utf8_spanish_ci');
+//                $miDB->exec('USE DBVGDWESProyectoTema4');
+//
+//                // Se crea la tabla
+//                $miDB->exec('CREATE TABLE IF NOT EXISTS T_02Departamento (
+//                     T02_CodDepartamento varchar(3) PRIMARY KEY, 
+//                     T02_FechaCreacionDepartamento datetime ,
+//                     T02_FechaBajaDepartamento date,
+//                     T02_DescDepartamento varchar(255),
+//                     T02_VolumenDeNegocio float)Engine=innodb');
+//                //Se inserta en la tabla creada
+//                $miDB->exec("INSERT INTO T_02Departamento (T02_CodDepartamento,T02_FechaCreacionDepartamento,T02_FechaBajaDepartamento,T02_DescDepartamento,T02_VolumenDeNegocio)
+//                            VALUES 
+//                               ('AUT','2024-10-23',NULL,'Departamento de Automoción',1285.50),
+//                               ('AER','2024-11-23',NULL,'Departamento de Aeronautica',2285.50),
+//                               ('DEF','2024-12-23',NULL,'Departamento de Defensa',3285.50)");
+
+               
                 ?>
             </section>
 

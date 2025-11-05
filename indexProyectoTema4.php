@@ -13,7 +13,7 @@
     </head>
     <body>
         <header class="header">
-            <a href="../VGDWESProyectoTema4/indexProyectoTema4.php">volver</a>
+            <a href="../VGDWESProyectoDWES/indexProyectoDWES.html">volver</a>
             <h1>PROYECTO TEMA 4</h1>
         </header>
         <main>
