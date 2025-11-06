@@ -61,15 +61,15 @@
                         <th>Mostrar</th>
                     </tr>
 
-                    <tr>
+<!--                    <tr>
                         <th>0</th>
-                        <!-- <span class="span">text</span> -->
+                         <span class="span">text</span> 
                         <td class="texto">Creación de la base de Datos Departamento. </td>
                         <td class="iconos"><a href="codigoPHP/ejercicio00.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio00.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                    </tr>
+                        <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>-->
 
                     <tr>
                         <th>1</th>
@@ -92,8 +92,8 @@
                     <th>3</th>
                     <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
                         control de errores.</td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio03.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>

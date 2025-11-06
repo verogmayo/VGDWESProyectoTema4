@@ -14,33 +14,89 @@
         <main>
             <section>
               
-                <?php
+                  <?php
                 /**
                  * @author: Véronique Grué
                  * @since 29/10/2025
                  * 
+                 * Ejercicio 1: Conexión a la base de datos con la cuenta usuario y tratamiento de errores.
                  */
-                
                 //  https://www.php.net/manual/es/pdo.connections.php
-                /** @var $dns (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
-                /** @var string $usuarioDb : usuario de la base de datos. dbname=DBVGDWESProyectoTema4*/
+                /** @var $dsn (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
+                /** @var string $usuarioDb : usuario de la base de datos. */
                 /** @var string $pswd Contraseña del usuario de la base de datos. */
+                //$dsn = 'mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
+                $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
+                $usuarioDb = 'userVGDWESProyectoTema4';
+                $pswd = 'paso';
+
+                //Atributos de la conexión. https://www.php.net/manual/es/pdo.getattribute.
+                //Para que se vean los nombre de los atributos hay que hacer un array clave->valor
+                /** @var array $aAtrConexion Atributos de la conexión */
+                $aAtrConexion = [
+                    'AUTOCOMMIT' => PDO::ATTR_AUTOCOMMIT,
+                    'CASE' => PDO::ATTR_CASE,
+                    'CLIENT_VERSION' => PDO::ATTR_CLIENT_VERSION,
+                    'CONNECTION_STATUS' => PDO::ATTR_CONNECTION_STATUS,
+                    'DRIVER_NAME' => PDO::ATTR_DRIVER_NAME,
+                    'ERRMODE' => PDO::ATTR_ERRMODE,
+                    'ORACLE_NULLS' => PDO::ATTR_ORACLE_NULLS,
+                    'PERSISTENT' => PDO::ATTR_PERSISTENT,
+                    'PREFETCH' => PDO::ATTR_PREFETCH,
+                    'SERVER_INFO' => PDO::ATTR_SERVER_INFO,
+                    'SERVER_VERSION' => PDO::ATTR_SERVER_VERSION,
+                    'TIMEOUT' => PDO::ATTR_TIMEOUT
+                ];
+
                 
-                $dns='mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
-                $usuarioDb='adminsql';     
-                $pswd='paso';
-                //Establecer la conexión en la base de datos
-                $miDB = new PDO($dns,$usuarioDb,$pswd);
-                if($miDB){
-                    echo'Conexion establecida con DBVGDWESProyectoTema4';
-                }else {
-                    echo'Error de conexión';
+
+
+                echo '<h2>Conexión con la base de datos sin errores</h2>';
+                try {
+                    //Establecer la conexión en la base de datos
+                    $miDB= new PDO($dsn, $usuarioDb, $pswd);
+                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
+                    echo'<h3>Atributos de la conexión</h3><br>';
+                    //para que se vean los nombre y la constante que corresponde a cada atributo.
+                    foreach ($aAtrConexion as $nombre => $constante) {
+                        echo "PDO::ATTR_$nombre: <br>";
+                        try {
+                            echo '<p style="color:green; font-weight:bold;">' . $miDB->getAttribute($constante) . "</p><br>";
+                        } catch (PDOException $miExceptionPDO) {
+                            echo '<p style="color:red"> <span style:"font-weight:bold">Error: </span>' . $miExceptionPDO->getMessage() . '. <br> <span class="font-weight:bold" >Código del error: </span>' . $miExceptionPDO->getCode() . "</p><br>";
+                        }
+                    }
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage().'<br>'. 'Código de error: ' . $miExceptionPDO->getCode();
+                } finally {
+                    //mejor dentro para que se cierre en todos los casos.
+                    unset($miDB);
                 }
-               // https://www.php.net/manual/es/pdo.error-handling.php
-               // $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //$miDB->query('SELECT * FROM tablaPrueba');
+
+                //Establecer la conexión en la base de datos
                 
-                unset($miDB);
+                 echo '<h2>Conexión con la base de datos con errores</h2>';
+                try {
+                    $miDB2=new PDO($dsn, 'usuarioDb', $pswd);
+                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
+                    echo'<h3>Atributos de la conexión</h3><br>';
+                    //para que se vean los nombre y la constante que corresponde a cada atributo.
+                    foreach ($aAtrConexion as $nombre => $constante) {
+                        echo "PDO::ATTR_$nombre: <br>";
+                        try {
+                            echo '<p style="color:green; font-weight:bold;">' . $miDB2->getAttribute($constante) . "</p><br>";
+                        } catch (PDOException $miExceptionPDO) {
+                            echo '<p style="color:red"> <span style:"font-weight:bold">Error: </span>' . $miExceptionPDO->getMessage() . '. <br> <span class="font-weight:bold" >Código del error: </span>' . $miExceptionPDO->getCode() . "</p><br>";
+                        }
+                    }
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold">Error: ' . $miExceptionPDO->getMessage().'<br>'. 'Código de error: ' . $miExceptionPDO->getCode();
+                } finally {
+                    //mejor dentro para que se cierre en todos los casos.
+                    unset($miDB2);
+                }
+
+
                 ?>
             </section>
 

@@ -18,32 +18,43 @@
                  * @author: Véronique Grué
                  * @since 29/10/2025
                  * 
+                 * Ejercicio 2: Mostrar el contenido de la tabla Departamento y el número de registros.
                  */
                 //  https://www.php.net/manual/es/pdo.connections.php
                 /** @var $dns (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
                 /** @var string $usuarioDb : usuario de la base de datos. */
                 /** @var string $pswd Contraseña del usuario de la base de datos. */
-                $dns = 'mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
-                $usuarioDb = 'adminsql';
+                $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
+                $usuarioDb = 'userVGDWESProyectoTema4';
                 $pswd = 'paso';
-                //Establecer la conexión en la base de datos
-                $miDB = new PDO($dns, $usuarioDb, $pswd);
-                $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                if ($miDB) {
-                    echo'Conexion establecida con DBVGDWESProyectoTema4';
-                } else {
-                    echo'Error de conexión';
-                }
-                //query para devolver datos
-                $resultadoConsulta=$miDB->query('SELECT * FROM T_02Departamento');
-                //$numRegistros=$miDB->query('SELECT count(*) FROM T_02Departamento');
-                //Mostrar los registros
-                while ($aRegistroArray = $resultadoConsulta->fetch()) {
-                    var_dump($aRegistroArray);
-                }
-                
 
-                unset($miDB);
+                //Establecer la conexión en la base de datos
+                try {
+                    //Establecer la conexión en la base de datos
+                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
+                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
+                    //query para devolver datos
+                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+                    //$numRegistros=$miDB->query('SELECT count(*) FROM T_02Departamento');
+                    //Mostrar los registros
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
+                    //PDO::FETCH_ASSOC: devuelve un array indexado por el nombre de la columna como se devuelve en el conjunto de resultados
+                    while ($aRegistroArray = $resultadoConsulta->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<p>';
+                        foreach ($aRegistroArray as $columna => $valor) {
+                            echo "<strong>$columna:</strong> $valor <br> ";
+                        }
+                        echo '</p><br>';
+                    }
+                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $total = $numRegistros->fetchColumn();
+                    echo "<p><strong>Número de registros:</strong> $total</p>";
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
+                } finally {
+                    //mejor dentro para que se cierre en todos los casos.
+                    unset($miDB);
+                }
                 ?>
             </section>
 
