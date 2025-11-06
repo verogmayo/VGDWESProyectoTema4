@@ -73,8 +73,8 @@
                     $aRespuestas['T02_CodDepartamento'] = trim($_REQUEST['T02_CodDepartamento']);
                    // $aRespuestas['T02_FechaCreacionDepartamento'] = $_REQUEST['T02_FechaCreacionDepartamento'];
                    // $aRespuestas['T02_FechaBajaDepartamento'] = $_REQUEST['T02_FechaBajaDepartamento'];
-                    $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'];
-                    $aRespuestas['T02_VolumenDeNegocio'] = $_REQUEST['T02_VolumenDeNegocio'];
+                    $aRespuestas['T02_DescDepartamento'] = trim($_REQUEST['T02_DescDepartamento']);
+                    $aRespuestas['T02_VolumenDeNegocio'] = trim($_REQUEST['T02_VolumenDeNegocio']);
 
                     try {
                         // Configuracion conexión PDO
@@ -146,6 +146,7 @@
 
 
         </main>
+       
         <footer class="footer">
             <div class="footerContent">
                 <div><p class="copyright">

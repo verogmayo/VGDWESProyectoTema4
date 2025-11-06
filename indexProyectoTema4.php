@@ -93,7 +93,7 @@
                     <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
                         control de errores.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio03.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio03.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>

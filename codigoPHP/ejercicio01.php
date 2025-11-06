@@ -58,14 +58,17 @@
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.
+                   // echo'<table>';
+                    
                     foreach ($aAtrConexion as $nombre => $constante) {
-                        echo "PDO::ATTR_$nombre: <br>";
+                        echo "PDO::ATTR_$nombre:";
                         try {
-                            echo '<p style="color:green; font-weight:bold;">' . $miDB->getAttribute($constante) . "</p><br>";
+                            echo '<span style="color:green; font-weight:bold;">' . $miDB->getAttribute($constante) . "</span><br>";
                         } catch (PDOException $miExceptionPDO) {
                             echo '<p style="color:red"> <span style:"font-weight:bold">Error: </span>' . $miExceptionPDO->getMessage() . '. <br> <span class="font-weight:bold" >Código del error: </span>' . $miExceptionPDO->getCode() . "</p><br>";
                         }
                     }
+                    //echo'</table>';
                 } catch (PDOException $miExceptionPDO) {
                     echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage().'<br>'. 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
@@ -77,12 +80,12 @@
                 
                  echo '<h2>Conexión con la base de datos con errores</h2>';
                 try {
-                    $miDB2=new PDO($dsn, 'usuarioDb', $pswd);
+                    $miDB2=new PDO($dsn, $usuarioDb, "pasa");
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.
                     foreach ($aAtrConexion as $nombre => $constante) {
-                        echo "PDO::ATTR_$nombre: <br>";
+                        echo "PDO::ATTR_$nombre:";
                         try {
                             echo '<p style="color:green; font-weight:bold;">' . $miDB2->getAttribute($constante) . "</p><br>";
                         } catch (PDOException $miExceptionPDO) {
