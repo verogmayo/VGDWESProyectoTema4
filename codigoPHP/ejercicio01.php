@@ -8,13 +8,13 @@
     </head>
     <body>
         <header class="header">
-             <a href="../indexProyectoTema4.php">volver</a>
+            <a href="../indexProyectoTema4.php">volver</a>
             <h1>Ejercicio 01</h1>
         </header>
         <main>
             <section>
-              
-                  <?php
+
+                <?php
                 /**
                  * @author: Véronique Grué
                  * @since 29/10/2025
@@ -48,18 +48,18 @@
                     'TIMEOUT' => PDO::ATTR_TIMEOUT
                 ];
 
-                
-
-
                 echo '<h2>Conexión con la base de datos sin errores</h2>';
                 try {
                     //Establecer la conexión en la base de datos
-                    $miDB= new PDO($dsn, $usuarioDb, $pswd);
+                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.
-                   // echo'<table>';
-                    
+                    // echo'<table>';
+//                    echo'<table>';
+//                    echo'<tr>';
+//                    echo'<th colspan=2> <h3>Atributos de la conexión</h3></th>';
+//                    echo'</tr>';
                     foreach ($aAtrConexion as $nombre => $constante) {
                         echo "PDO::ATTR_$nombre:";
                         try {
@@ -70,17 +70,17 @@
                     }
                     //echo'</table>';
                 } catch (PDOException $miExceptionPDO) {
-                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage().'<br>'. 'Código de error: ' . $miExceptionPDO->getCode();
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.
                     unset($miDB);
                 }
 
                 //Establecer la conexión en la base de datos
-                
-                 echo '<h2>Conexión con la base de datos con errores</h2>';
+
+                echo '<h2>Conexión con la base de datos con errores</h2>';
                 try {
-                    $miDB2=new PDO($dsn, $usuarioDb, "pasa");
+                    $miDB2 = new PDO($dsn, $usuarioDb, "pasa");
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.
@@ -93,13 +93,11 @@
                         }
                     }
                 } catch (PDOException $miExceptionPDO) {
-                    echo '<p style="color:purple; font-weight:bold">Error: ' . $miExceptionPDO->getMessage().'<br>'. 'Código de error: ' . $miExceptionPDO->getCode();
+                    echo '<p style="color:purple; font-weight:bold">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.
                     unset($miDB2);
                 }
-
-
                 ?>
             </section>
 

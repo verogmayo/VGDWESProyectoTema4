@@ -47,8 +47,9 @@
                 margin-bottom: 50px;
                 padding: 20px;
                 position: relative;
-                border: solid lightskyblue;
+                height: 300px;
                 border-radius: 20px;
+                border: solid lightskyblue;
             }
 
 
@@ -97,7 +98,7 @@
             <h1>Ejercicio 04</h1>
         </header>
         <main>
-            <section>
+            
                 <?php
                 /**
                  * @author: Véronique Grué
@@ -203,14 +204,14 @@
                     //si hay algún error se vuelve a mostrar el formulario
                     ?>
                     <section>
-                        <h2>Rellena el formulario.</h2>
+                        <h2>BUSQUEDAD POR LA DESCRIPCIÓN.</h2>
                         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-
+                            
                             <label for="T02_DescDepartamento">Descripción:</label>
-                            <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a><br>
+                            <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a>
                             <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value='<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?> '><br>
 
-                            <button type="submit" name="enviar" id="enviar">Enviar</button>
+                            <button type="submit" name="enviar" id="enviar">Buscar</button>
                             <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
 
                         </form>  

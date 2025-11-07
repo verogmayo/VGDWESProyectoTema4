@@ -10,7 +10,7 @@
                 margin: 0 auto;
             }
             main{
-                display: flex;
+                display: block;
                 align-content: center;
             }
             label{
@@ -26,9 +26,7 @@
                 padding-left: 5px;
                 border-radius: 5px;
             }
-            #preguntaSeguridad, #nombre{
-                margin-right: 10px;
-            }
+            
 
             button{
                 font-size: 20px;
@@ -44,6 +42,7 @@
             section{
                 margin-top: 10px;
                 display: inline-block;
+                height: 500px;
                 margin-bottom: 50px;
                 padding: 20px;
                 position: relative;
@@ -56,7 +55,7 @@
                 width: 500px;
             }
             input#T02_CodDepartamento{
-                width: 35px;
+                width: 40px;
             }
 
 
@@ -88,7 +87,37 @@
                 bottom: 10px;
                 right: 10px;
             }
-
+            
+            
+            h3{
+                font-size: 24px;
+            }
+            table{
+                border:solid;
+                width: 80%;
+                text-align: center;
+                border-collapse: collapse;
+            }
+            th{
+                border: solid;
+                padding: 5px 0 5px 0;
+                font-size: 20px;
+                font-weight: 900;
+                background-color: lightskyblue;
+            }
+            td{
+                border: solid 1px;
+                padding: 5px 0 5px 0;
+                font-size: 18px;
+                border-right: solid ;
+            }
+            .titulo{
+                text-align: center;
+            }
+            .registro{
+                border: solid;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body>
@@ -111,7 +140,11 @@
              */
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
-
+            
+            // Variable Configuracion conexión PDO
+            $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
+            $usuarioDb = 'userVGDWESProyectoTema4';
+            $pswd = 'paso';
             ///inicialización de variables
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
@@ -135,6 +168,11 @@
 
             //Para cada campo del formulario se valida la entrada y se actua en consecuencia
             if (isset($_REQUEST['enviar'])) {//se cumple si el boton es submit
+//                $sql2="SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$aRespuestas['T02_CodDepartamento']}'";
+//                $codigoRepetido = $miDB->query(sql2);
+//                if(empty($codigoRepetido) ){
+//                    $aErrores['T02_CodDepartamento'] = validacionFormularios::comprobarAlfabetico($_REQUEST['T02_CodDepartamento'], 3, 3, 1);
+//                }
                 //Validación de los datos de los campos del formulario
                 $aErrores['T02_CodDepartamento'] = validacionFormularios::comprobarAlfabetico($_REQUEST['T02_CodDepartamento'], 3, 3, 1);
                 //$aErrores['T02_FechaCreacionDepartamento'] = validacionFormularios::validarFecha($_REQUEST['T02_FechaCreacionDepartamento'], $fechaMaxima, $fechaMinima, 1);
@@ -162,10 +200,8 @@
                 $aRespuestas['T02_VolumenDeNegocio'] = trim($_REQUEST['T02_VolumenDeNegocio']);
 
                 try {
-                    // Configuracion conexión PDO
-                    $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
-                    $usuarioDb = 'userVGDWESProyectoTema4';
-                    $pswd = 'paso';
+                    
+                    
 
                     $miDB = new PDO($dsn, $usuarioDb, $pswd);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -235,12 +271,65 @@
                         <a style='color:red'><?php echo $aErrores['T02_VolumenDeNegocio'] ?></a>
                         <input name="T02_VolumenDeNegocio" id="T02_VolumenDeNegocio" type="text" value='<?php echo(empty($aErrores['T02_VolumenDeNegocio'])) ? ($_REQUEST['T02_VolumenDeNegocio'] ?? '') : ''; ?> '><br>
 
-                        <button type="submit" name="enviar" id="enviar">Enviar</button>
+                        <button type="submit" name="enviar" id="enviar">Añadir</button>
                         <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
                         
 
                     </form>  
                     <?php
+                }
+                ?>
+            </section>
+            <section>
+                <?php
+             try {
+                    //Establecer la conexión en la base de datos
+                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
+                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
+                    echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
+                    //query para devolver datos
+                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+                    //$numRegistros=$miDB->query('SELECT count(*) FROM T_02Departamento');
+                    //Mostrar los registros
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
+                    //PDO::FETCH_ASSOC: devuelve un array indexado por el nombre de la columna como se devuelve en el conjunto de resultados
+
+                    echo'<table>';
+                    echo '<tr>';
+                    echo'<th> Codigo </th>';
+                    echo '<th> Fecha Creación </th>';
+                    echo '<th> Fecha Baja </th>';
+                    echo '<th> Descripción </th>';
+                    echo '<th> Volumen de Negocio</th>';
+                    echo '</tr>';
+
+                    while ($aRegistroArray = $resultadoConsulta->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo'<td> ' . $aRegistroArray['T02_CodDepartamento'] . '</td>';
+                        $oFechaCreacion = new DateTime($aRegistroArray['T02_FechaCreacionDepartamento']);
+                        echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
+                        if (!is_null($aRegistroArray['T02_FechaBajaDepartamento'])) {
+                            //si no se pone la condición la fecha no es null
+                            $oFechaBaja = new DateTime($aRegistroArray['T02_FechaBajaDepartamento']);
+                            echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
+                        } else {
+                            echo '<td>Activo</td>';
+                        }
+                        echo'<td> ' . $aRegistroArray['T02_DescDepartamento'] . '</td>';
+                        echo'<td> ' . number_format($aRegistroArray['T02_VolumenDeNegocio'], 2, ',', '.') . '€</td>';
+                        echo '</tr>';
+                    }
+
+                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $total = $numRegistros->fetchColumn();
+                    echo '<tr>';
+                    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
+                    echo '</table>';
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
+                } finally {
+                    //mejor dentro para que se cierre en todos los casos.
+                    unset($miDB);
                 }
                 ?>
             </section>
