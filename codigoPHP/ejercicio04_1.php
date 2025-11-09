@@ -163,17 +163,9 @@
                 //Si no se ha aceptado el formulario
                 $entradaOK = false;
             }
-            //Tratamiento del formulario
-            if ($entradaOK) {
-                //REllenamos el array de respuesta con los valores que ha introducido el usuario
-
-                $aRespuestas['T02_DescDepartamento'] = ($_REQUEST['T02_DescDepartamento']);
-
-              
-            } else {
-                //si hay algún error se vuelve a mostrar el formulario
-                ?>
-                <section>
+            ?>
+            <!-- //Tratamiento del formulario -->
+             <section>
                     <h2>Mantenimiento del Departamento.</h2>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 
@@ -185,14 +177,18 @@
                         <!--                            <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>-->
 
                     </form>  
-                    <?php
-                }
-                ?>
+                </section>
+            <?php
+            
+                //REllenamos el array de respuesta con los valores que ha introducido el usuario
 
-            </section>
-            <section class="contenedorTabla">
+              //  $aRespuestas['T02_DescDepartamento'] = ($_REQUEST['T02_DescDepartamento']);
+
+                ?>
+                
+                    <section class="contenedorTabla">
                 <?php
-              try {
+       try {
                     // Configuracion conexión PDO
                     $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
                     $usuarioDb = 'userVGDWESProyectoTema4';
@@ -202,7 +198,7 @@
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Consulta si el usuario no introduce datos
-                    if (empty($aRespuestas['T02_DescDepartamento'])) {
+                    if ($entradaOK && !empty($aRespuestas['T02_DescDepartamento'])) {
                         $sql = "SELECT * FROM T_02Departamento ";
                     } else {
                         //Consulta si el usuario introduce parte o la totalidad de la descripción
@@ -247,11 +243,25 @@
                 } finally {
                     unset($miDB);
                 }
+                   
+                
                 ?>
-                </section>
 
+            </section>
+           
+            
+            
+            
+            
+            
+            
+            
+            
         </main>
 
+        
+        
+        
         <footer class="footer">
             <div class="footerContent">
                 <div><p class="copyright">
