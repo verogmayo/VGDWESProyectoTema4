@@ -31,7 +31,7 @@
                 padding-left: 5px;
                 border-radius: 5px;
             }
-            
+
             button{
                 font-size: 20px;
                 background-color: grey;
@@ -76,8 +76,8 @@
             #T02_FechaCreacionDepartamento, #T02_FechaBajaDepartamento{
                 background-color: gainsboro;
             }
-           
-            
+
+
             table{
                 border:solid;
                 width: 80%;
@@ -147,7 +147,7 @@
 
             //Para cada campo del formulario se valida la entrada y se actua en consecuencia
             if (isset($_REQUEST['buscar'])) {//se cumple si el boton es buscar
-               // $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
+                // $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
                 if (!empty($_REQUEST['T02_DescDepartamento'])) {
                     $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
                 }
@@ -158,7 +158,6 @@
                         $entradaOK = false;
                     }
                 }
-                
             } else {
                 //Si no se ha aceptado el formulario
                 $entradaOK = false;
@@ -168,8 +167,6 @@
                 //REllenamos el array de respuesta con los valores que ha introducido el usuario
 
                 $aRespuestas['T02_DescDepartamento'] = ($_REQUEST['T02_DescDepartamento']);
-
-              
             } else {
                 //si hay algún error se vuelve a mostrar el formulario
                 ?>
@@ -182,7 +179,7 @@
                         <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value="<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?>">
 
                         <button type="submit" name="buscar" id="buscar">Buscar</button>
-                        <!--                            <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>-->
+                        
 
                     </form>  
                     <?php
@@ -192,7 +189,7 @@
             </section>
             <section class="contenedorTabla">
                 <?php
-              try {
+                try {
                     // Configuracion conexión PDO
                     $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
                     $usuarioDb = 'userVGDWESProyectoTema4';
@@ -206,15 +203,15 @@
                         $sql = "SELECT * FROM T_02Departamento ";
                     } else {
                         //Consulta si el usuario introduce parte o la totalidad de la descripción
-                        $aRespuestasSql = "%" . $aRespuestas['T02_DescDepartamento'] . "%";
+                        $RespuestasSql = "%" . $aRespuestas['T02_DescDepartamento'] . "%";
 
-                        $sql = "SELECT * FROM T_02Departamento WHERE T02_DescDepartamento LIKE '$aRespuestasSql'";
+                        $sql = "SELECT * FROM T_02Departamento WHERE T02_DescDepartamento LIKE '$RespuestasSql'";
                     }
                     //Se ejecuta con query
                     $resultadoConsulta = $miDB->query($sql);
-                    
+
                     echo'<h3>Resultados de la busquedad</h3><br>';
-                     echo'<table>';
+                    echo'<table>';
                     echo '<tr>';
                     echo'<th> Codigo </th>';
                     echo '<th> Fecha Creación </th>';
@@ -239,7 +236,13 @@
                         echo'<td> ' . number_format($aRegistroArray['T02_VolumenDeNegocio'], 2, ',', '.') . '€</td>';
                         echo '</tr>';
                     }
+                     $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $total = $numRegistros->fetchColumn();
+                    echo '<tr>';
+                    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                     echo'</table>';
+                    
+                    
                 } catch (PDOException $miExceptionPDO) {
                     echo '<p style="color:purple; font-weight:bold;">Error en la base de datos: '
                     . $miExceptionPDO->getMessage() . '<br>Código: '
@@ -248,7 +251,7 @@
                     unset($miDB);
                 }
                 ?>
-                </section>
+            </section>
 
         </main>
 

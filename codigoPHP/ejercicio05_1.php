@@ -170,16 +170,12 @@
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
                 'T02_CodDepartamento' => '',
-                // 'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];
             /** @var array $aRespuestas Array para almacenar las repuestas. */
             $aRespuestas = [
                 'T02_CodDepartamento' => '',
-                //'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];
