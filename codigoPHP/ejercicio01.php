@@ -22,13 +22,13 @@
                  * Ejercicio 1: Conexión a la base de datos con la cuenta usuario y tratamiento de errores.
                  */
                 //  https://www.php.net/manual/es/pdo.connections.php
-                /** @var $dsn (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
-                /** @var string $usuarioDb : usuario de la base de datos. */
-                /** @var string $pswd Contraseña del usuario de la base de datos. */
-                //$dsn = 'mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
-                $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
-                $usuarioDb = 'userVGDWESProyectoTema4';
-                $pswd = 'paso';
+               /** @define DNS (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
+                /** @define string USUARIODB : usuario de la base de datos. */
+                /** @define string PSWD Contraseña del usuario de la base de datos. */
+                define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+                define(USUARIODB ,'userVGDWESProyectoTema4');
+                define(PSWD, 'paso');
+
 
                 //Atributos de la conexión. https://www.php.net/manual/es/pdo.getattribute.
                 //Para que se vean los nombre de los atributos hay que hacer un array clave->valor
@@ -51,7 +51,7 @@
                 echo '<h2>Conexión con la base de datos sin errores</h2>';
                 try {
                     //Establecer la conexión en la base de datos
-                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.
@@ -61,7 +61,7 @@
 //                    echo'<th colspan=2> <h3>Atributos de la conexión</h3></th>';
 //                    echo'</tr>';
                     foreach ($aAtrConexion as $nombre => $constante) {
-                        echo "PDO::ATTR_$nombre:";
+                        echo "PDO::ATTR_$nombre: ";
                         try {
                             echo '<span style="color:green; font-weight:bold;">' . $miDB->getAttribute($constante) . "</span><br>";
                         } catch (PDOException $miExceptionPDO) {
@@ -80,7 +80,7 @@
 
                 echo '<h2>Conexión con la base de datos con errores</h2>';
                 try {
-                    $miDB2 = new PDO($dsn, $usuarioDb, "pasa");
+                    $miDB2 = new PDO(DNS, USUARIODB, "pasa");
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.

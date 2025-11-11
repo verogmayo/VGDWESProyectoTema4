@@ -51,15 +51,15 @@
             }
 
 
-            input#DescDpto{
+            input#T02_DescDepartamento{
                 width: 500px;
             }
-            input#CodigoDpto{
+            input#T02_CodDepartamento{
                 width: 50px;
             }
 
 
-            #CodigoDpto, #DescDpto, #VolNegocioDpto{
+            #T02_CodDepartamento, #T02_DescDepartamento, #T02_VolumenDeNegocio{
                 background-color:rgb(252, 248, 204);
                 font-weight: bold;
             }
@@ -151,7 +151,7 @@
             require_once '../core/libreriaValidacion.php';
             require_once '../core/miLibreriaStatic.php';
 
-            // Constantes Configuracion conexión PDO
+            // Variable Configuracion conexión PDO
             define('DNS', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
             define('USUARIODB', 'userVGDWESProyectoTema4');
             define('PSWD', 'paso');
@@ -161,15 +161,15 @@
             ///inicialización de variables
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
-                'CodigoDpto' => '',
-                'DescDpto' => '',
-                'VolNegocioDpto' => ''
+                'T02_CodDepartamento' => '',
+                'T02_DescDepartamento' => '',
+                'T02_VolumenDeNegocio' => ''
             ];
             /** @var array $aRespuestas Array para almacenar las repuestas. */
             $aRespuestas = [
-                'CodigoDpto' => '',
-                'DescDpto' => '',
-                'VolNegocioDpto' => ''
+                'T02_CodDepartamento' => '',
+                'T02_DescDepartamento' => '',
+                'T02_VolumenDeNegocio' => ''
             ];
 
             /** @boollean boolean $entradaOK Indica si los datos de entrada son correctos o no. */
@@ -178,19 +178,19 @@
             //Para cada campo del formulario se valida la entrada y se actua en consecuencia
             if (isset($_REQUEST['enviar'])) {//se cumple si el boton es enviar
                 //Validación de los datos de los campos del formulario
-                $aErrores['CodigoDpto'] = miLibreriaStatic::comprobarAlfabeticoMayuscula($_REQUEST['CodigoDpto'], 3, 3, 1);
+                $aErrores['T02_CodDepartamento'] = miLibreriaStatic::comprobarAlfabeticoMayuscula($_REQUEST['T02_CodDepartamento'], 3, 3, 1);
                 //Comprobacion de que el codigo no está ya en la tabla departamento
-                if (empty($aErrores['CodigoDpto'])) {
-                    $sql2 = "SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$_REQUEST['CodigoDpto']}'";
+                if (empty($aErrores['T02_CodDepartamento'])) {
+                    $sql2 = "SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$_REQUEST['T02_CodDepartamento']}'";
                     $resultadoConsulta = $miDB->query($sql2);
                     //https://www.php.net/manual/es/pdostatement.rowcount.php
                     if ($resultadoConsulta->rowCount() > 0) {
-                        $aErrores['CodigoDpto'] = "Este código ya existe. ";
+                        $aErrores['T02_CodDepartamento'] = "Este código ya existe. ";
                     }
                 }
 
-                $aErrores['DescDpto'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['DescDpto'], 255, 5, 1);
-                $aErrores['VolNegocioDpto'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['VolNegocioDpto'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
+                $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 5, 1);
+                $aErrores['T02_VolumenDeNegocio'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['T02_VolumenDeNegocio'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
 
                 //recorre el array de errores para detectar si hay alguno
                 foreach ($aErrores as $campo => $valorCampo) {
@@ -205,14 +205,14 @@
             //Tratamiento del formulario
             if ($entradaOK) {
                 //REllenamos el array de respuesta con los valores que ha introducido el usuario
-                $aRespuestas['CodigoDpto'] = $_REQUEST['CodigoDpto'];
-                $aRespuestas['DescDpto'] = $_REQUEST['DescDpto'];
+                $aRespuestas['T02_CodDepartamento'] = $_REQUEST['T02_CodDepartamento'];
+                $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'];
 
                 //------------------------------------------------------------
                 //conversion de la coma en punto en el float
-                $volumenConPunto = str_replace(',', '.', $_REQUEST['VolNegocioDpto']);
+                $volumenConPunto = str_replace(',', '.', $_REQUEST['T02_VolumenDeNegocio']);
                 // Asignación del valor al array 
-                $aRespuestas['VolNegocioDpto'] = $volumenConPunto;
+                $aRespuestas['T02_VolumenDeNegocio'] = $volumenConPunto;
                 //-------------------------------------------------------
 
                 try {
@@ -221,19 +221,19 @@
                     $sql = "INSERT INTO T_02Departamento 
                             (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
                            VALUES (
-                             '{$aRespuestas['CodigoDpto']}',
-                             '{$aRespuestas['DescDpto']}',
-                             '{$aRespuestas['VolNegocioDpto']}'
+                             '{$aRespuestas['T02_CodDepartamento']}',
+                             '{$aRespuestas['T02_DescDepartamento']}',
+                             '{$aRespuestas['T02_VolumenDeNegocio']}'
                         )";
                     $miDB->query($sql);
 
                     //Para limpoar el formulario
-                    $_REQUEST['CodigoDpto'] = '';
-                    $_REQUEST['DescDpto'] = '';
-                    $_REQUEST['VolNegocioDpto'] = '';
-                    $_POST['CodigoDpto'] = '';
-                    $_POST['DescDpto'] = '';
-                    $_POST['VolNegocioDpto'] = '';
+                    $_REQUEST['T02_CodDepartamento'] = '';
+                    $_REQUEST['T02_DescDepartamento'] = '';
+                    $_REQUEST['T02_VolumenDeNegocio'] = '';
+                    $_POST['T02_CodDepartamento'] = '';
+                    $_POST['T02_DescDepartamento'] = '';
+                    $_POST['T02_VolumenDeNegocio'] = '';
 
                     // echo "<p style='color:green; font-weight:bold;'>Departamento insertado correctamente.</p><br>";
                 } catch (PDOException $miExceptionPDO) {
@@ -247,20 +247,20 @@
                 <h2>Inserta un nuevo departamento.</h2>
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 
-                    <label for="CodigoDpto">Código :</label>
-                    <input name="CodigoDpto" id="CodigoDpto" type="text" value="<?php echo(empty($aErrores['CodigoDpto'])) ? ($_REQUEST['CodigoDpto'] ?? '') : ''; ?>">
-                    <a style='color:red'><?php echo $aErrores['CodigoDpto'] ?></a>
+                    <label for="T02_CodDepartamento">Código :</label>
+                    <input name="T02_CodDepartamento" id="T02_CodDepartamento" type="text" value="<?php echo(empty($aErrores['T02_CodDepartamento'])) ? ($_REQUEST['T02_CodDepartamento'] ?? '') : ''; ?>">
+                    <a style='color:red'><?php echo $aErrores['T02_CodDepartamento'] ?></a>
 
                     <br><label for="T02_FechaCreacionDepartamento">Fecha Creación :</label>
                     <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="date" value="<?php echo date('Y-m-d'); ?>" disabled><br>
 
-                    <label for="DescDpto">Descripción:</label>
-                    <a style='color:red'><?php echo $aErrores['DescDpto'] ?></a>
-                    <input name="DescDpto" id="DescDpto" type="text" value="<?php echo(empty($aErrores['DescDpto'])) ? ($_REQUEST['DescDpto'] ?? '') : ''; ?>"><br>
+                    <label for="T02_DescDepartamento">Descripción:</label>
+                    <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a>
+                    <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value="<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?>"><br>
 
-                    <label for="VolNegocioDpto">Volumen de negocio:</label>
-                    <input name="VolNegocioDpto" id="VolNegocioDpto" type="text" value="<?php echo(empty($aErrores['VolNegocioDpto'])) ? ($_REQUEST['VolNegocioDpto'] ?? '') : ''; ?>">
-                    <a style='color:red'><?php echo $aErrores['VolNegocioDptoo'] ?></a>
+                    <label for="T02_VolumenDeNegocio">Volumen de negocio:</label>
+                    <input name="T02_VolumenDeNegocio" id="T02_VolumenDeNegocio" type="text" value="<?php echo(empty($aErrores['T02_VolumenDeNegocio'])) ? ($_REQUEST['T02_VolumenDeNegocio'] ?? '') : ''; ?>">
+                    <a style='color:red'><?php echo $aErrores['T02_VolumenDeNegocio'] ?></a>
 
                     <button type="submit" name="enviar" id="enviar">Añadir</button>
                     <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
