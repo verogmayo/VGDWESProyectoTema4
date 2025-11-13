@@ -62,7 +62,6 @@
 
 
             #DescDpto{
-                background-color:rgb(252, 248, 204);
                 font-weight: bold;
             }
             li{

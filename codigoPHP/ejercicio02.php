@@ -100,7 +100,7 @@
                         echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
                         echo '</tr>';
                     }
-
+                    
                     $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
                     $total = $numRegistros->fetchColumn();
                     echo '<tr>';

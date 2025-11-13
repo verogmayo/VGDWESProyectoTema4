@@ -28,24 +28,24 @@
                 //enlace a los datos de conexión
                 require_once '../config/pdoconfig.php';
                 try {
-                //Establecer la conexión en la base de datos
-                $miDB = new PDO(DNS, USUARIODB, PSWD);
-                $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
+                    //Establecer la conexión en la base de datos
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
+                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
                     //Array de los nuevos departamentos
                     $aDepartamentos = [
                         ['FRA', 'Departamento de Francés', 4567.98],
                         ['ING', 'Departamento de Ingles', 14567.98],
                         ['ALE', 'Departamento de Aleman', 4067.98]
                     ];
-
+                     
                     // Creacion de la consulta
                     $sql = "INSERT INTO T_02Departamento 
             (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
             VALUES (:codigo, :descripcion, :volumen)";
-
+                    $miDB->beginTransaction();
                     $consultaPreparada = $miDB->prepare($sql);
-
+                   
                     //bucle for para el insert
                     foreach ($aDepartamentos as $departamento) {
                         $consultaPreparada->bindParam(':codigo', $departamento[0]);
@@ -54,9 +54,14 @@
 
                         $consultaPreparada->execute();
                         echo "<p style='color:green;'>Departamento {$departamento[1]} insertado correctamente.</p>";
-                    }
+                        
+                        
+                        }
+                    $miDB->commit();
                     echo "<h3 style='color:green; font-weight:bold;'>Todos los departamentos fueron insertados correctamente.</h3>";
                 } catch (PDOException $miExceptionPDO) {
+                    $miDB->rollBack();
+                    echo '<h3 style="color:blue; font-weight:bold;">La transacción no se ha podido completar correctamente</h3>';
                     echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.

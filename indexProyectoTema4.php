@@ -20,30 +20,45 @@
             <section>
                 <h2>EJERCICIOS DEL TEMA 4</h2>
                 
-                <h3>SCRIPTS DE LA BASE DE DATOS</h3>
+                <h3>CONTENIDO DE LOS FICHEROS EXTERNOS</h3>
                 <table>
                     <tr>
-                        <th>Nº</th>
+                        
+                        <th>Descriptción</th>
+                        <th>Mostrar</th>
                         <th>Descriptción</th>
                         <th>Mostrar</th>
                         
                     </tr>
                     <tr>
-                        <th>1</th>
+                        
                         <td class="texto">Creación de la base de Datos y del usuario. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCreaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        
+                        
+                        <td class="texto">Librería personal. </td>
+                        <td class="iconos"> <a href="core/miLibreriaStatic.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
-
+                    
                      <tr>
-                        <th>2</th>
+                        
                         <td class="texto">Carga de la base de Datos. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCargaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                    </tr>
+                         <td class="texto">Fichero de configuración PDO. </td>
+                        <td class="iconos"> <a href="config/pdoconfig.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                     </tr>
                      <tr>
-                        <th>3</th>
+                       
                         <td class="texto">Borrado de la base de Datos. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraBorraDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="texto"> </td>
+                        <td class="iconos"> <a href=""><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        
+                       
                     </tr>
+                     </tr>
+                    
+                   
                 </table>
 
                 <table>
