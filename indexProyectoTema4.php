@@ -120,8 +120,8 @@
                         <th>6</th>
                         <td class="texto">Página web que cargue registros en la tabla Departamento desde un array departamentos nuevos
                             utilizando una consulta preparada.</td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio06.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio06.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>

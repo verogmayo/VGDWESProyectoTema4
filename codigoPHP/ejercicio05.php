@@ -54,9 +54,13 @@
                  * los tres registros o no se añada ninguno. 
                  */
                 // Constantes Configuracion conexión PDO
-                define('DNS', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-                define('USUARIODB', 'userVGDWESProyectoTema4');
-                define('PSWD', 'paso');
+                //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+//                define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
+//                define('USUARIODB' ,'userVGDWESProyectoTema4');
+//                define('PSWD', 'pasoDWES4');
+                //define(PSWD, 'paso');
+                require_once '../config/pdoconfig.php';
+                
                 //Establecer la conexión en la base de datos
                 $miDB = new PDO(DNS, USUARIODB, PSWD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -25,10 +25,12 @@
                /** @define DNS (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
                 /** @define string USUARIODB : usuario de la base de datos. */
                 /** @define string PSWD Contraseña del usuario de la base de datos. */
-                define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-                define(USUARIODB ,'userVGDWESProyectoTema4');
-                define(PSWD, 'paso');
-
+                //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+                //define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
+                //define('USUARIODB' ,'userVGDWESProyectoTema4');
+                //define('PSWD', 'pasoDWES4');
+                //define(PSWD, 'paso');
+                require_once '../config/pdoconfig.php';
 
                 //Atributos de la conexión. https://www.php.net/manual/es/pdo.getattribute.
                 //Para que se vean los nombre de los atributos hay que hacer un array clave->valor

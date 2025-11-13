@@ -152,9 +152,12 @@
             require_once '../core/miLibreriaStatic.php';
 
             // Constantes Configuracion conexión PDO
-            define('DNS', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-            define('USUARIODB', 'userVGDWESProyectoTema4');
-            define('PSWD', 'paso');
+            //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+//            define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
+//            define('USUARIODB', 'userVGDWESProyectoTema4');
+//            define('PSWD', 'pasoDWES4');
+            //define(PSWD, 'paso');
+            require_once '../config/pdoconfig.php';
             //Establecer la conexión en la base de datos
             $miDB = new PDO(DNS, USUARIODB, PSWD);
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -270,55 +273,55 @@
 
             </section>
             <section class="contenedorTabla">
-<?php
-try {
-    //Establecer la conexión en la base de datos
+                <?php
+                try {
+                    //Establecer la conexión en la base de datos
 
-    echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
-    //query para devolver datos
-    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+                    echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
+                    //query para devolver datos
+                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
 
-    //https://www.php.net/manual/es/pdostatement.fetch.php
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
 
 
-    echo'<table>';
-    echo '<tr>';
-    echo'<th> Codigo </th>';
-    echo '<th> Fecha Creación </th>';
-    echo '<th> Fecha Baja </th>';
-    echo '<th> Descripción </th>';
-    echo '<th> Volumen de Negocio</th>';
-    echo '</tr>';
+                    echo'<table>';
+                    echo '<tr>';
+                    echo'<th> Codigo </th>';
+                    echo '<th> Fecha Creación </th>';
+                    echo '<th> Fecha Baja </th>';
+                    echo '<th> Descripción </th>';
+                    echo '<th> Volumen de Negocio</th>';
+                    echo '</tr>';
 
-    while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
-        echo '<tr>';
-        echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
-        $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
-        echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
-        if (!is_null($oRegistroObject->T02_FechaBajaDepartamento)) {
-            //si no se pone la condición la fecha no es null
-            $oFechaBaja = new DateTime($oRegistroObject->T02_FechaBajaDepartamento);
-            echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
-        } else {
-            echo '<td>Activo</td>';
-        }
-        echo'<td> ' . $oRegistroObject->T02_DescDepartamento . '</td>';
-        echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
-        echo '</tr>';
-    }
+                    while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
+                        echo '<tr>';
+                        echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
+                        $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
+                        echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
+                        if (!is_null($oRegistroObject->T02_FechaBajaDepartamento)) {
+                            //si no se pone la condición la fecha no es null
+                            $oFechaBaja = new DateTime($oRegistroObject->T02_FechaBajaDepartamento);
+                            echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
+                        } else {
+                            echo '<td>Activo</td>';
+                        }
+                        echo'<td> ' . $oRegistroObject->T02_DescDepartamento . '</td>';
+                        echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
+                        echo '</tr>';
+                    }
 
-    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
-    $total = $numRegistros->fetchColumn();
-    echo '<tr>';
-    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
-    echo '</table>';
-} catch (PDOException $miExceptionPDO) {
-    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
-} finally {
-    //mejor dentro para que se cierre en todos los casos.
-    unset($miDB);
-}
-?>
+                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $total = $numRegistros->fetchColumn();
+                    echo '<tr>';
+                    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
+                    echo '</table>';
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
+                } finally {
+                    //mejor dentro para que se cierre en todos los casos.
+                    unset($miDB);
+                }
+                ?>
             </section>
 
 
