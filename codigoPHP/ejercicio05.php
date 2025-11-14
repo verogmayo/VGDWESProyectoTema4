@@ -46,71 +46,76 @@
                 <?php
                 /**
                  * @author: Véronique Grué
-                 * @since 06/11/2025
+                 * @since 13/11/2025
                  * 
                  *  * Ejercicio 5
                  * * 	Página web que añade tres registros a nuestra tabla Departamento utilizando 
                  * tres instrucciones insert y una transacción, de tal forma que se añadan 
                  * los tres registros o no se añada ninguno. 
                  */
-                // Constantes Configuracion conexión PDO
-                //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-//                define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
-//                define('USUARIODB' ,'userVGDWESProyectoTema4');
-//                define('PSWD', 'pasoDWES4');
-                //define(PSWD, 'paso');
-                require_once '../config/pdoconfig.php';
+                // VERSION CON CONSULTA PREPARADA
                 
-                //Establecer la conexión en la base de datos
-                $miDB = new PDO(DNS, USUARIODB, PSWD);
-                $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                require_once '../config/confDBPDO.php';
 
+                //Establecer la conexión en la base de datos
+                
                 echo'<h3 class="titulo">Inserción de 3 departamentos con transación</h3>';
                 //Establecer la conexión en la base de datos
+
+                $aDepartamentos = [
+                    ['CodDpto' => 'FRA',
+                        'DescDpto' => 'Francés',
+                        'VolDpto' => 4567.98],
+                    ['CodDpto' => 'ING',
+                        'DescDpto' => 'Ingles',
+                        'VolDpto' => 14567.98],
+                    ['CodDpto' => 'ALE',
+                        'DescDpto' => 'Aleman',
+                        'VolDpto' => 4067.98]
+                ];
                 try {
 
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
 
-                    //query para devolver datos
-                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+                    //Establecer la conexión en la base de datos
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
+                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    //Mostrar los registros
-                    //https://www.php.net/manual/es/pdostatement.fetch.php
-                    //PDO::FETCH_ASSOC: devuelve un array indexado por el nombre de la columna como se devuelve en el conjunto de resultados
                     $miDB->beginTransaction();
-                    echo'<p>Transacción iniciada</p>';
+                    // Creacion de la consulta. Se puede utilizar heredoc para que se vea mejor el codigo
+                    $sql = <<<SQL
+                    INSERT INTO T_02Departamento 
+                        (T02_CodDepartamento, 
+                         T02_DescDepartamento, 
+                         T02_VolumenDeNegocio)
+                    VALUES (:codigo, :descripcion, :volumen)          
+                    SQL;
 
-                    //Primer insert
-                    $sql1 = "INSERT INTO T_02Departamento 
-                            (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
-                            VALUES('KKK','KKKKKKKKKKKKKKKKKKKKKKKKK',3904.87)";
-                    $miDB->query($sql1);
+                    //Empieza la transacción
 
-                    //Seggundo insert
-                    $sql2 = "INSERT INTO T_02Departamento 
-                            (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
-                            VALUES('LLL','LLLLLLLLLLLLLLLLLLLL',3984.87)";
-                    $miDB->query($sql2);
+                    $consultaPreparada = $miDB->prepare($sql);
 
-                    //Tercer insert
-                    $sql3 = "INSERT INTO T_02Departamento 
-                            (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
-                            VALUES('OOO','OOOOOOOOOOOOOOOOOOOOOOOO',9984.87)";
-                    $miDB->query($sql3);
+                    //bucle for para el insert
+                    foreach ($aDepartamentos as $departamento) {
 
-                    //Si todo va bien se confirma
+                        $consultaPreparada->bindParam(':codigo', $departamento['CodDpto']);
+                        $consultaPreparada->bindParam(':descripcion', $departamento['DescDpto']);
+                        $consultaPreparada->bindParam(':volumen', $departamento['VolDpto']);
+
+                        $consultaPreparada->execute();
+                    }
                     $miDB->commit();
                     echo'<h3 style="color:blue; font-weight:bold;">Los 3 departamentos se han insertado correctamente!!!!</h3><br></br>';
+                    
+                    //SECCION DE LA TABLA
                     echo' <section class="contenedorTabla">';
 
                     try {
-                        //Establecer la conexión en la base de datos
-                        $miDB = new PDO(DNS, USUARIODB, PSWD);
-                        echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                         
-                        //query para devolver datos
-                        $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
-
+                        //consulta preparada para devolver datos
+                        $consultaPreparada2 = $miDB->prepare('SELECT * FROM T_02Departamento');
+                        $consultaPreparada2->execute();
+                        
                         //Mostrar los registros
                         //https://www.php.net/manual/es/pdostatement.fetch.php
 
@@ -124,7 +129,7 @@
                         echo '<th> Volumen de Negocio</th>';
                         echo '</tr>';
 
-                        while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
+                        while ($oRegistroObject = $consultaPreparada2->fetchObject()) {
                             echo '<tr>';
                             echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
                             $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
@@ -141,7 +146,8 @@
                             echo '</tr>';
                         }
 
-                        $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                        $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
+                        $numRegistros->execute();
                         $total = $numRegistros->fetchColumn();
                         echo '<tr>';
                         echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
@@ -149,8 +155,6 @@
                     } catch (PDOException $miExceptionPDO) {
                         echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                     } finally {
-                        //mejor dentro para que se cierre en todos los casos.
-                        unset($miDB);
                     }
 
                     echo'   </section>';

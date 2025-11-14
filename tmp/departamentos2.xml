@@ -1,0 +1,15 @@
+<departamentos>
+    <departamento><codDpto>AER</codDpto><descDpto>Aeronautica</descDpto></departamento>
+    <departamento><codDpto>ALE</codDpto><descDpto>Aleman</descDpto></departamento>
+    <departamento><codDpto>AUT</codDpto><descDpto>Automoci&#xF3;n</descDpto></departamento>
+    <departamento><codDpto>CHI</codDpto><descDpto>Chino</descDpto></departamento>
+    <departamento><codDpto>DEF</codDpto><descDpto>Defensa</descDpto></departamento>
+    <departamento><codDpto>FRA</codDpto><descDpto>Franc&#xE9;s</descDpto></departamento>
+    <departamento><codDpto>HJK</codDpto><descDpto>hhhhhhhhhhhhhhhhhhhhhhhh</descDpto></departamento>
+    <departamento><codDpto>ING</codDpto><descDpto>Ingles</descDpto></departamento>
+    <departamento><codDpto>ITA</codDpto><descDpto>Italiano</descDpto></departamento>
+    <departamento><codDpto>SUE</codDpto><descDpto>Sueco</descDpto></departamento>
+    <departamento><codDpto>DAN</codDpto><descDpto>Danes</descDpto></departamento>
+    <departamento><codDpto>AUS</codDpto><descDpto>Austriaco</descDpto></departamento>
+    <departamento><codDpto>UKR</codDpto><descDpto>Ukraniano</descDpto></departamento>
+</departamentos>

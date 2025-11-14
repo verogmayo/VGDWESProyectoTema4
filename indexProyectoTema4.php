@@ -19,46 +19,45 @@
         <main>
             <section>
                 <h2>EJERCICIOS DEL TEMA 4</h2>
-                
+
                 <h3>CONTENIDO DE LOS FICHEROS EXTERNOS</h3>
                 <table>
                     <tr>
-                        
+
                         <th>Descriptción</th>
                         <th>Mostrar</th>
                         <th>Descriptción</th>
                         <th>Mostrar</th>
-                        
+
                     </tr>
                     <tr>
-                        
+
                         <td class="texto">Creación de la base de Datos y del usuario. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCreaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        
-                        
+
+
                         <td class="texto">Librería personal. </td>
-                        <td class="iconos"> <a href="core/miLibreriaStatic.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraMiLibreriaStatic.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
-                    
-                     <tr>
-                        
+
+                    <tr>
+
                         <td class="texto">Carga de la base de Datos. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCargaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                         <td class="texto">Fichero de configuración PDO. </td>
-                        <td class="iconos"> <a href="config/pdoconfig.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                     </tr>
-                     <tr>
-                       
+                        <td class="texto">Fichero de configuración PDO. </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraconfDBPDO.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>
+                    <tr>
+
                         <td class="texto">Borrado de la base de Datos. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraBorraDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="texto"> </td>
                         <td class="iconos"> <a href=""><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                        
-                       
+
+
                     </tr>
-                     </tr>
-                    
-                   
+
+
                 </table>
 
                 <table>
@@ -105,9 +104,9 @@
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
-                    <th>3</th>
-                    <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
-                        control de errores.</td>
+                        <th>3</th>
+                        <td class="texto">Formulario para añadir un departamento a la tabla Departamento con validación de entrada y
+                            control de errores.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio03.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio03.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
@@ -116,7 +115,7 @@
                     <tr>
                         <th>4</th>
                         <td class="texto">Formulario de búsqueda de departamentos por descripción  <span class="span">(por una parte del campo
-                        DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span> .</td>
+                                DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span> .</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio04.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio04.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
@@ -135,7 +134,7 @@
                         <th>6</th>
                         <td class="texto">Página web que cargue registros en la tabla Departamento desde un array departamentos nuevos
                             utilizando una consulta preparada.</td>
-                        <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio06.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio06.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
@@ -144,16 +143,18 @@
                         <th>7</th>
                         <td class="texto">Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
                             Departamento de nuestra base de datos.</td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio07.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>8</th>
-                        <td class="texto">Mostrar la dirección IP del equipo desde el que estás accediendo.</td>
-                      <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio08.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="texto">Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
+                            fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
+                            encuentra en el directorio .../tmp/ del servidor.</td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio08.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio08.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
@@ -182,7 +183,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../index.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-28"></time> 28-10-2025 </address>
+                        <time datetime="2025-11-14"></time> 14-11-2025 </address>
                 </div>
 
             </div>

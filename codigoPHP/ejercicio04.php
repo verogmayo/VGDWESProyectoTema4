@@ -123,24 +123,16 @@
             <?php
             /**
              * @author: Véronique Grué
-             * @since 06/11/2025
+             * @since 13/11/2025
              * 
              *  * Ejercicio 4
              * * 	Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos) .
              */
+            //CON CONSULTA PREPARADA
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
-
-            // Constantes Configuracion conexión PDO
-            //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-//            define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
-//            define('USUARIODB', 'userVGDWESProyectoTema4');
-//            define('PSWD', 'pasoDWES4');
-            //define(PSWD, 'paso');
-            require_once '../config/pdoconfig.php';
-            //Establecer la conexión en la base de datos
-            $miDB = new PDO(DNS, USUARIODB, PSWD);
-            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //enlace para la configuración de la conexiona a la base de datos
+            require_once '../config/confDBPDO.php';
 
             ///inicialización de variables
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
@@ -198,7 +190,8 @@
             <section class="contenedorTabla">
                 <?php
                 try {
-                    // Consulta si el usuario no introduce datos
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
+                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     if (empty($aRespuestas['DescDpto'])) {
                         $sql = "SELECT * FROM T_02Departamento ";
                     } else {
@@ -207,10 +200,15 @@
 
                         $sql = "SELECT * FROM T_02Departamento WHERE T02_DescDepartamento LIKE '$RespuestasSql'";
                     }
-                    //Se ejecuta con query
-                    $resultadoConsulta = $miDB->query($sql);
+                    
+                    //consulta preparada para devolver datos
+                    $consultaPreparada2 = $miDB->prepare($sql);
+                    $consultaPreparada2->execute();
 
-                    echo'<h3>Resultados de la busquedad</h3><br>';
+                    //Mostrar los registros
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
+
+
                     echo'<table>';
                     echo '<tr>';
                     echo'<th> Codigo </th>';
@@ -220,31 +218,31 @@
                     echo '<th> Volumen de Negocio</th>';
                     echo '</tr>';
 
-                    while ($aRegistroArray = $resultadoConsulta->fetch(PDO::FETCH_ASSOC)) {
+                    while ($oRegistroObject = $consultaPreparada2->fetchObject()) {
                         echo '<tr>';
-                        echo'<td> ' . $aRegistroArray['T02_CodDepartamento'] . '</td>';
-                        $oFechaCreacion = new DateTime($aRegistroArray['T02_FechaCreacionDepartamento']);
+                        echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
+                        $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
                         echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
-                        if (!is_null($aRegistroArray['T02_FechaBajaDepartamento'])) {
-                            //si no se pone la condición la fecha no es null y pone la fecha de hoy
-                            $oFechaBaja = new DateTime($aRegistroArray['T02_FechaBajaDepartamento']);
+                        if (!is_null($oRegistroObject->T02_FechaBajaDepartamento)) {
+                            //si no se pone la condición la fecha no es null
+                            $oFechaBaja = new DateTime($oRegistroObject->T02_FechaBajaDepartamento);
                             echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
                         } else {
                             echo '<td>Activo</td>';
                         }
-                        echo'<td> ' . $aRegistroArray['T02_DescDepartamento'] . '</td>';
-                        echo'<td> ' . number_format($aRegistroArray['T02_VolumenDeNegocio'], 2, ',', '.') . '€</td>';
+                        echo'<td> ' . $oRegistroObject->T02_DescDepartamento . '</td>';
+                        echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
                         echo '</tr>';
                     }
-                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+
+                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
+                    $numRegistros->execute();
                     $total = $numRegistros->fetchColumn();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
-                    echo'</table>';
+                    echo '</table>';
                 } catch (PDOException $miExceptionPDO) {
-                    echo '<p style="color:purple; font-weight:bold;">Error en la base de datos: '
-                    . $miExceptionPDO->getMessage() . '<br>Código: '
-                    . $miExceptionPDO->getCode() . '</p>';
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     unset($miDB);
                 }

@@ -151,13 +151,8 @@
             require_once '../core/libreriaValidacion.php';
             require_once '../core/miLibreriaStatic.php';
 
-            // Constantes Configuracion conexión PDO
-            //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-//            define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
-//            define('USUARIODB', 'userVGDWESProyectoTema4');
-//            define('PSWD', 'pasoDWES4');
-            //define(PSWD, 'paso');
-            require_once '../config/pdoconfig.php';
+            //enlace para la configuración de la conexiona a la base de datos
+            require_once '../config/confDBPDO.php';
             //Establecer la conexión en la base de datos
             $miDB = new PDO(DNS, USUARIODB, PSWD);
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -185,13 +180,13 @@
                 //Comprobacion de que el codigo no está ya en la tabla departamento
                 if (empty($aErrores['CodigoDpto'])) {
                     $sql2 = "SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$_REQUEST['CodigoDpto']}'";
-                    $resultadoConsulta = $miDB->query($sql2);
+                    $resultadoConsulta = $miDB->prepare($sql2);
                     //https://www.php.net/manual/es/pdostatement.rowcount.php
                     if ($resultadoConsulta->rowCount() > 0) {
                         $aErrores['CodigoDpto'] = "Este código ya existe. ";
                     }
                 }
-
+                $resultadoConsulta->execute();
                 $aErrores['DescDpto'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['DescDpto'], 255, 5, 1);
                 $aErrores['VolNegocioDpto'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['VolNegocioDpto'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
 
@@ -275,12 +270,11 @@
             <section class="contenedorTabla">
                 <?php
                 try {
-                    //Establecer la conexión en la base de datos
+                    //consulta preparada para devolver datos
+                    $consultaPreparada2 = $miDB->prepare('SELECT * FROM T_02Departamento');
+                    $consultaPreparada2->execute();
 
-                    echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
-                    //query para devolver datos
-                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
-
+                    //Mostrar los registros
                     //https://www.php.net/manual/es/pdostatement.fetch.php
 
 
@@ -293,7 +287,7 @@
                     echo '<th> Volumen de Negocio</th>';
                     echo '</tr>';
 
-                    while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
+                    while ($oRegistroObject = $consultaPreparada2->fetchObject()) {
                         echo '<tr>';
                         echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
                         $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
@@ -310,7 +304,8 @@
                         echo '</tr>';
                     }
 
-                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
+                    $numRegistros->execute();
                     $total = $numRegistros->fetchColumn();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";

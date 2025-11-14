@@ -52,7 +52,16 @@
                  * Ejercicio 2: Mostrar el contenido de la tabla Departamento y el número de registros.
                  */
                 //  https://www.php.net/manual/es/pdo.connections.php
-                //CONSULTA PREPARADA
+                /** @define DNS (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
+                /** @define string USUARIODB : usuario de la base de datos. */
+                /** @define string PSWD Contraseña del usuario de la base de datos. */
+                
+                //CONSULTA CON QUERY
+                //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+//                define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
+//                define('USUARIODB' ,'userVGDWESProyectoTema4');
+//                define('PSWD', 'pasoDWES4');
+                //define(PSWD, 'paso');
                 require_once '../config/confDBPDO.php';
 
                 //Establecer la conexión en la base de datos
@@ -62,8 +71,8 @@
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
                     //query para devolver datos
-                    $resultadoConsulta = $miDB->prepare('SELECT * FROM T_02Departamento');
-                    $resultadoConsulta->execute();
+                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+            
                     //Mostrar los registros
                     //https://www.php.net/manual/es/pdostatement.fetch.php
                    
@@ -94,8 +103,7 @@
                         echo '</tr>';
                     }
                     
-                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                    $numRegistros->execute();
+                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
                     $total = $numRegistros->fetchColumn();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
