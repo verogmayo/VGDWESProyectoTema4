@@ -116,7 +116,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-09"></time> 09-10-2025 </address>
+                        <time datetime="2025-11-13"></time> 13-11-2025 </address>
                 </div>
 
             </div>

@@ -9,6 +9,9 @@
             *{
                 margin: 0 auto;
             }
+            h2{
+                padding: 0;
+            }
             h3{
                 font-size: 24px;
                 margin-bottom: 15px;
@@ -25,7 +28,7 @@
             }
             th{
                 border: solid black;
-                padding: 5px 0 5px 0;
+                padding: 5px 10px;
                 font-size: 20px;
                 font-weight: 900;
                 background-color: lightskyblue;
@@ -93,7 +96,7 @@
                     
                     // Mostrar los atributos en tabla HTML
                     echo '<table ">';
-                    echo '<tr style="background-color:#f0f0f0; font-weight:bold;">';
+                    echo '<tr ">';
                     echo '<th>Atributo PDO</th>';
                     echo '<th>Valor</th>';
                     echo '</tr>';
@@ -102,9 +105,9 @@
                         echo '<tr>';
                         echo "<td>PDO::ATTR_$nombre</td>";
                         try {
-                            echo '<td style="color:green; ">' . htmlspecialchars($miDB->getAttribute($constante)) . '</td>';
+                            echo '<td style="color:green; ">' . $miDB->getAttribute($constante) . '</td>';
                         } catch (PDOException $miExceptionPDO) {
-                            echo '<td style="color:red;">Error: ' . htmlspecialchars($miExceptionPDO->getMessage()) . '</td>';
+                            echo '<td style="color:red;">Error: ' . $miExceptionPDO->getMessage() . '</td>';
                         }
                         echo '</tr>';
                     }

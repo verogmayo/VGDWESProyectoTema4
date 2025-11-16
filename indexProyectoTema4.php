@@ -64,8 +64,8 @@
                     <tr>
                         <th rowspan="2">Nº</th>
                         <th rowspan="2">Enunciados</th>
-                        <th colspan="2">PDO</th>
-                        <th colspan="2">MySQLi</th>
+                        <th colspan="2">PDO (Preparada)</th>
+                        <th colspan="2">PDO (Query)</th>
                     </tr>
                     <tr>
 
@@ -74,6 +74,8 @@
                         <th>Ejecutar</th>
                         <th>Mostrar</th>
                     </tr>
+                    
+                    
 
 <!--                    <tr>
                         <th>0</th>
@@ -92,16 +94,16 @@
                         <td class="texto">Conexión a la base de datos con la cuenta usuario y tratamiento de errores. </td>
                         <td class="iconos"><a href="codigoPHP/ejercicio01.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio01.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio01_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio01_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>2</th>
                         <td class="texto">Mostrar el contenido de la tabla Departamento y el número de registros.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio02.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio02.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio02_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio02_1.php"><i class="fa-solid fa-eye"></i></a>  </td>
                     </tr>
                     <tr>
                         <th>3</th>
@@ -109,17 +111,17 @@
                             control de errores.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio03.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio03.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="odigoPHP/ejercicio03_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio03_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>4</th>
                         <td class="texto">Formulario de búsqueda de departamentos por descripción  <span class="span">(por una parte del campo
-                                DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span> .</td>
+                                DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</span>.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio04.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio04.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio04.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio04_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio04_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>5</th>
@@ -127,8 +129,8 @@
                             insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno.
                         </td><td class="iconos"><a href="codigoPHP/ejercicio05.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio05.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio05_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio05_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>6</th>
@@ -145,8 +147,8 @@
                             Departamento de nuestra base de datos.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio07.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio07_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>8</th>
@@ -155,8 +157,8 @@
                             encuentra en el directorio .../tmp/ del servidor.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio08.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio08.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"><a href="codigoPHP/ejercicio08_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio08_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>9</th>

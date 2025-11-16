@@ -147,39 +147,28 @@
              * Ejercicio 3
              * *Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
              */
+            //CONSULTA QUERY
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
             require_once '../core/miLibreriaStatic.php';
 
-             //Para utilizar datos en varias sessiones   
-            //https://www.php.net/manual/es/reserved.variables.session.php
-            
-            // SE inicia la ssesion
-            session_start();
-            
-            if(!isset($_SESSION["incluirDptos"])){
-                $_SESSION["incluirDptos"]=[];
-            }
             // Variable Configuracion conexión PDO
-            $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
-            $usuarioDb = 'userVGDWESProyectoTema4';
-            $pswd = 'paso';
-            $miDB = new PDO($dsn, $usuarioDb, $pswd);
+            define('DNS', 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
+            define('USUARIODB', 'userVGDWESProyectoTema4');
+            define('PSWD', 'paso');
+            //Establecer la conexión en la base de datos
+            $miDB = new PDO(DNS, USUARIODB, PSWD);
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             ///inicialización de variables
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
                 'T02_CodDepartamento' => '',
-                // 'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];
             /** @var array $aRespuestas Array para almacenar las repuestas. */
             $aRespuestas = [
                 'T02_CodDepartamento' => '',
-                //'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];
@@ -188,7 +177,7 @@
             $entradaOK = true;
 
             //Para cada campo del formulario se valida la entrada y se actua en consecuencia
-            if (isset($_REQUEST['enviar'])) {//se cumple si el boton es submit
+            if (isset($_REQUEST['enviar'])) {//se cumple si el boton es enviar
                 //Validación de los datos de los campos del formulario
                 $aErrores['T02_CodDepartamento'] = miLibreriaStatic::comprobarAlfabeticoMayuscula($_REQUEST['T02_CodDepartamento'], 3, 3, 1);
                 //Comprobacion de que el codigo no está ya en la tabla departamento
@@ -201,9 +190,6 @@
                     }
                 }
 
-
-                //$aErrores['T02_FechaCreacionDepartamento'] = validacionFormularios::validarFecha($_REQUEST['T02_FechaCreacionDepartamento'], $fechaMaxima, $fechaMinima, 1);
-                //$aErrores['T02_FechaBajaDepartamento'] = validacionFormularios::validarFecha($_REQUEST['T02_FechaBajaDepartamento'], $fechaMaxima, $fechaMinima, 1);
                 $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 5, 1);
                 $aErrores['T02_VolumenDeNegocio'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['T02_VolumenDeNegocio'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
 
@@ -221,16 +207,15 @@
             if ($entradaOK) {
                 //REllenamos el array de respuesta con los valores que ha introducido el usuario
                 $aRespuestas['T02_CodDepartamento'] = $_REQUEST['T02_CodDepartamento'];
-                // $aRespuestas['T02_FechaCreacionDepartamento'] = $_REQUEST['T02_FechaCreacionDepartamento'];
-                // $aRespuestas['T02_FechaBajaDepartamento'] = $_REQUEST['T02_FechaBajaDepartamento'];
                 $aRespuestas['T02_DescDepartamento'] = $_REQUEST['T02_DescDepartamento'];
-                //$aRespuestas['T02_VolumenDeNegocio'] = $_REQUEST['T02_VolumenDeNegocio'];
+
                 //------------------------------------------------------------
                 //conversion de la coma en punto en el float
                 $volumenConPunto = str_replace(',', '.', $_REQUEST['T02_VolumenDeNegocio']);
                 // Asignación del valor al array 
                 $aRespuestas['T02_VolumenDeNegocio'] = $volumenConPunto;
                 //-------------------------------------------------------
+
                 try {
 
                     // Preparación de la consulta con query
@@ -242,70 +227,101 @@
                              '{$aRespuestas['T02_VolumenDeNegocio']}'
                         )";
                     $miDB->query($sql);
-//                        // Preparación de la consulta con parámetros
-//                        $sql = "INSERT INTO T_02Departamento 
-//                            (T02_CodDepartamento, T02_DescDepartamento, T02_VolumenDeNegocio)
-//                            VALUES (:codDpto,:descDpto, :volDpto)";
-//
-//                        $consulta = $miDB->prepare($sql);
-                    // Asignar valores a los parámetros
-//                    $consulta->bindParam(':codDpto', $aRespuestas['T02_CodDepartamento']);
-//                    $consulta->bindParam(':descDpto', $aRespuestas['T02_DescDepartamento']);
-//                    $consulta->bindParam(':volDpto', $aRespuestas['T02_VolumenDeNegocio']);
-                    //var_dump($aRespuestas);
-                    // Ejecutar la consulta
-                    //$consulta->execute();
 
-                    echo "<p style='color:green; font-weight:bold;'>Departamento insertado correctamente.</p><br>";
+                    //Para limpoar el formulario
+                    $_REQUEST['T02_CodDepartamento'] = '';
+                    $_REQUEST['T02_DescDepartamento'] = '';
+                    $_REQUEST['T02_VolumenDeNegocio'] = '';
+                    $_POST['T02_CodDepartamento'] = '';
+                    $_POST['T02_DescDepartamento'] = '';
+                    $_POST['T02_VolumenDeNegocio'] = '';
+
+                    // echo "<p style='color:green; font-weight:bold;'>Departamento insertado correctamente.</p><br>";
                 } catch (PDOException $miExceptionPDO) {
                     echo '<p style="color:purple; font-weight:bold;">Error en la base de datos: '
                     . $miExceptionPDO->getMessage() . '<br>Código: '
                     . $miExceptionPDO->getCode() . '</p>';
+                }
+            }
+            ?>
+            <section>
+                <h2>Inserta un nuevo departamento.</h2>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+
+                    <label for="T02_CodDepartamento">Código :</label>
+                    <input name="T02_CodDepartamento" id="T02_CodDepartamento" type="text" value="<?php echo(empty($aErrores['T02_CodDepartamento'])) ? ($_REQUEST['T02_CodDepartamento'] ?? '') : ''; ?>">
+                    <a style='color:red'><?php echo $aErrores['T02_CodDepartamento'] ?></a>
+
+                    <br><label for="T02_FechaCreacionDepartamento">Fecha Creación :</label>
+                    <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="date" value="<?php echo date('Y-m-d'); ?>" disabled><br>
+
+                    <label for="T02_DescDepartamento">Descripción:</label>
+                    <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a>
+                    <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value="<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?>"><br>
+
+                    <label for="T02_VolumenDeNegocio">Volumen de negocio:</label>
+                    <input name="T02_VolumenDeNegocio" id="T02_VolumenDeNegocio" type="text" value="<?php echo(empty($aErrores['T02_VolumenDeNegocio'])) ? ($_REQUEST['T02_VolumenDeNegocio'] ?? '') : ''; ?>">
+                    <a style='color:red'><?php echo $aErrores['T02_VolumenDeNegocio'] ?></a>
+
+                    <button type="submit" name="enviar" id="enviar">Añadir</button>
+                    <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
+
+
+                </form>  
+
+            </section>
+            <section class="contenedorTabla">
+                <?php
+                try {
+                    //Establecer la conexión en la base de datos
+
+                    echo'<h3 class="titulo" style="font-weight:bold;">Contenido de la tabla Departamento</h3></br>';
+                    //query para devolver datos
+                    $resultadoConsulta = $miDB->query('SELECT * FROM T_02Departamento');
+
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
+
+
+                    echo'<table>';
+                    echo '<tr>';
+                    echo'<th> Codigo </th>';
+                    echo '<th> Fecha Creación </th>';
+                    echo '<th> Fecha Baja </th>';
+                    echo '<th> Descripción </th>';
+                    echo '<th> Volumen de Negocio</th>';
+                    echo '</tr>';
+
+                    while ($oRegistroObject = $resultadoConsulta->fetchObject()) {
+                        echo '<tr>';
+                        echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
+                        $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
+                        echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
+                        if (!is_null($oRegistroObject->T02_FechaBajaDepartamento)) {
+                            //si no se pone la condición la fecha no es null
+                            $oFechaBaja = new DateTime($oRegistroObject->T02_FechaBajaDepartamento);
+                            echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
+                        } else {
+                            echo '<td>Activo</td>';
+                        }
+                        echo'<td> ' . $oRegistroObject->T02_DescDepartamento . '</td>';
+                        echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
+                        echo '</tr>';
+                    }
+
+                    $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
+                    $total = $numRegistros->fetchColumn();
+                    echo '<tr>';
+                    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
+                    echo '</table>';
+                } catch (PDOException $miExceptionPDO) {
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
+                    //mejor dentro para que se cierre en todos los casos.
                     unset($miDB);
-                }
-
-                //Se recorre el array de las respuestas y se muestran
-
-                foreach ($aRespuestas as $campo => $valorCampo) {
-                    echo("$campo del usuario : " . $valorCampo . '</br>');
-                }
-               
-            } else {
-                //si hay algún error se vuelve a mostrar el formulario
-                ?>
-                <section>
-                    <h2>Inserta un nuevo departamento.</h2>
-                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-
-                        <label for="T02_CodDepartamento">Código :</label>
-                        <input name="T02_CodDepartamento" id="T02_CodDepartamento" type="text" value="<?php echo(empty($aErrores['T02_CodDepartamento'])) ? ($_REQUEST['T02_CodDepartamento'] ?? '') : ''; ?>">
-                        <a style='color:red'><?php echo $aErrores['T02_CodDepartamento'] ?></a>
-
-                        <br><label for="T02_FechaCreacionDepartamento">Fecha Creación :</label>
-                        <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="date" value="<?php echo date('Y-m-d'); ?>" disabled><br>
-
-                        <!--                        <label for="T02_FechaBajaDepartamento">Fecha Baja :</label> 
-                                                <input name="T02_FechaBajaDepartamento" id="T02_FechaBajaDepartamento" type="date" value="" disabled><br>-->
-
-                        <label for="T02_DescDepartamento">Descripción:</label>
-                        <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a>
-                        <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value="<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?>"><br>
-
-                        <label for="T02_VolumenDeNegocio">Volumen de negocio:</label>
-                        <input name="T02_VolumenDeNegocio" id="T02_VolumenDeNegocio" type="text" value="<?php echo(empty($aErrores['T02_VolumenDeNegocio'])) ? ($_REQUEST['T02_VolumenDeNegocio'] ?? '') : ''; ?>">
-                        <a style='color:red'><?php echo $aErrores['T02_VolumenDeNegocio'] ?></a>
-
-                        <button type="submit" name="enviar" id="enviar">Añadir</button>
-                        <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
-
-
-                    </form>  
-                    <?php
                 }
                 ?>
             </section>
-          
+
 
         </main>
 

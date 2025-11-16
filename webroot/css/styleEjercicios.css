@@ -19,7 +19,7 @@ html{
     height: 100%;
     margin: 0;
 }
-header{
+.header{
     background-color: var(--headerColor);
     margin: 0;
     padding: 1rem;
@@ -29,6 +29,11 @@ header{
 
 h1{
     width: 80%;
+    text-align: center;
+}
+h2{
+    text-align:  center;
+    padding: 1rem;
 }
 header a{
     font-size:20px;
@@ -58,14 +63,8 @@ main{
 section{
     margin-top: 40px;
 }
-h1 {
-    text-align: center;
-}
 
-h2{
-    text-align:  center;
-    padding: 1rem;
-}
+
 
 a {
     text-decoration: none;
@@ -73,7 +72,7 @@ a {
 
 }
 
-footer{
+.footer{
     background-color: var(--secondColor);
     padding:0 ;
     margin: 0;

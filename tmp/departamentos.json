@@ -1,0 +1,56 @@
+{
+    "departamentos": [
+        {
+            "codDpto": "AER",
+            "descDpto": "Aeronautica"
+        },
+        {
+            "codDpto": "ALE",
+            "descDpto": "Aleman"
+        },
+        {
+            "codDpto": "AUS",
+            "descDpto": "Austriaco"
+        },
+        {
+            "codDpto": "AUT",
+            "descDpto": "Automoción"
+        },
+        {
+            "codDpto": "CHI",
+            "descDpto": "Chino"
+        },
+        {
+            "codDpto": "DAN",
+            "descDpto": "Danes"
+        },
+        {
+            "codDpto": "DEF",
+            "descDpto": "Defensa"
+        },
+        {
+            "codDpto": "FRA",
+            "descDpto": "Francés"
+        },
+        {
+            "codDpto": "HJK",
+            "descDpto": "hhhhhhhhhhhhhhhhhhhhhhhh"
+        },
+        {
+            "codDpto": "ING",
+            "descDpto": "Ingles"
+        },
+        {
+            "codDpto": "ITA",
+            "descDpto": "Italiano"
+        },
+        {
+            "codDpto": "SUE",
+            "descDpto": "Sueco"
+        },
+        {
+            "codDpto": "UKR",
+            "descDpto": "Ukraniano"
+        }
+    ]
+}

@@ -141,12 +141,13 @@
             /**
              * @author Véronique Grué
              * @version 1.0
-             * @date 2025-11-05 
+             * @date 2025-11-07 
              * 
              *
              * Ejercicio 3
              * *Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
              */
+            //CONSULTA PREPARADA
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
             require_once '../core/miLibreriaStatic.php';

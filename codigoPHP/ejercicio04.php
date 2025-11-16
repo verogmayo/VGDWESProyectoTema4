@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,12 +126,12 @@
              * @since 13/11/2025
              * 
              *  * Ejercicio 4
-             * * 	Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos) .
+             * * Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos) .
              */
             //CON CONSULTA PREPARADA
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
-            //enlace para la configuración de la conexiona a la base de datos
+            //enlace para la configuración de la conexion a la base de datos
             require_once '../config/confDBPDO.php';
 
             ///inicialización de variables
@@ -255,7 +255,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-10"></time> 10-10-2025 </address>
+                        <time datetime="2025-11-13"></time> 13-11-2025 </address>
                 </div>
 
             </div>

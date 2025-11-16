@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Véro Grué - ProyectoTema4 Ejercicio02</title>
+        <title>Véro Grué - ProyectoTema4 Ejercicio02_1</title>
         <link rel="stylesheet" href="../webroot/css/styleEjercicios.css">
         <style>
             h3{
@@ -40,7 +40,7 @@
     <body>
         <header class="header">
             <a href="../indexProyectoTema4.php">volver</a>
-            <h1>Ejercicio 02</h1>
+            <h1>Ejercicio 02_1</h1>
         </header>
         <main>
             <section>
@@ -52,16 +52,10 @@
                  * Ejercicio 2: Mostrar el contenido de la tabla Departamento y el número de registros.
                  */
                 //  https://www.php.net/manual/es/pdo.connections.php
-                /** @define DNS (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
-                /** @define string USUARIODB : usuario de la base de datos. */
-                /** @define string PSWD Contraseña del usuario de la base de datos. */
+               
                 
                 //CONSULTA CON QUERY
-                //define(DNS, 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4');
-//                define('DNS', 'mysql:host=localhost;dbname=DBVGDWESProyectoTema4');
-//                define('USUARIODB' ,'userVGDWESProyectoTema4');
-//                define('PSWD', 'pasoDWES4');
-                //define(PSWD, 'paso');
+                
                 require_once '../config/confDBPDO.php';
 
                 //Establecer la conexión en la base de datos
