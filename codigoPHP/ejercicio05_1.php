@@ -144,9 +144,10 @@
              * @date 2025-11-05 
              * 
              *
-             * Ejercicio 3
+             * Ejercicio 5
              * *Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.
              */
+            //CONSULTA CON QUERY
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
             require_once '../core/miLibreriaStatic.php';
@@ -154,7 +155,7 @@
             //Para utilizar datos en varias sessiones   
             //https://www.php.net/manual/es/reserved.variables.session.php
             // SE inicia la ssesion
-            session_start();
+           
 
             if (!isset($_SESSION["incluirDptos"])) {
                 $_SESSION["incluirDptos"] = [];
@@ -170,16 +171,12 @@
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
                 'T02_CodDepartamento' => '',
-                // 'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];
             /** @var array $aRespuestas Array para almacenar las repuestas. */
             $aRespuestas = [
                 'T02_CodDepartamento' => '',
-                //'T02_FechaCreacionDepartamento' => new DateTime(),
-                // 'T02_FechaBajaDepartamento' => new DateTime(),
                 'T02_DescDepartamento' => '',
                 'T02_VolumenDeNegocio' => ''
             ];

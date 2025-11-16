@@ -5,6 +5,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Véro Grué - ProyectoTema4 Ejercicio01</title>
         <link rel="stylesheet" href="../webroot/css/styleEjercicios.css">
+        <style>
+            *{
+                margin: 0 auto;
+            }
+            h2{
+                padding: 0;
+            }
+            h3{
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            section{
+                display: block;
+                align-content: center;
+                text-align: center;
+            }
+             table{
+                border:solid;
+                width: 80%;
+                border-collapse: collapse;
+            }
+            th{
+                border: solid black;
+                padding: 5px 10px;
+                font-size: 20px;
+                font-weight: 900;
+                background-color: lightskyblue;
+                text-align: left;
+            }
+            td{
+                border: solid 1px black;
+                padding: 5px 10px;
+                font-size: 18px;
+                border-right: solid black;
+                font-weight:bold;
+                text-align: left;
+            }
+            .contenedorTabla{
+                width: 100%;
+                margin-bottom: 10px;
+                height: auto;
+            }
+        </style>
     </head>
     <body>
         <header class="header">
@@ -22,13 +65,8 @@
                  * Ejercicio 1: Conexión a la base de datos con la cuenta usuario y tratamiento de errores.
                  */
                 //  https://www.php.net/manual/es/pdo.connections.php
-                /** @var $dsn (Data Source Name): indica el tipo de conexión, el host y el nombre de la base de datos. */
-                /** @var string $usuarioDb : usuario de la base de datos. */
-                /** @var string $pswd Contraseña del usuario de la base de datos. */
-                //$dsn = 'mysql:host=10.199.10.49;dbname=DBVGDWESProyectoTema4';
-                $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
-                $usuarioDb = 'userVGDWESProyectoTema4';
-                $pswd = 'paso';
+                //enlace a los datos de conexión
+                require_once '../config/confDBPDO.php';
 
                 //Atributos de la conexión. https://www.php.net/manual/es/pdo.getattribute.
                 //Para que se vean los nombre de los atributos hay que hacer un array clave->valor
@@ -49,38 +87,43 @@
                 ];
 
                 echo '<h2>Conexión con la base de datos sin errores</h2>';
+                
                 try {
                     //Establecer la conexión en la base de datos
-                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
-                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
-                    echo'<h3>Atributos de la conexión</h3><br>';
-                    //para que se vean los nombre y la constante que corresponde a cada atributo.
-                    // echo'<table>';
-//                    echo'<table>';
-//                    echo'<tr>';
-//                    echo'<th colspan=2> <h3>Atributos de la conexión</h3></th>';
-//                    echo'</tr>';
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
+                    echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3>';
+                    echo'<h3>Atributos de la conexión</h3>';
+                    
+                    // Mostrar los atributos en tabla HTML
+                    echo '<table ">';
+                    echo '<tr ">';
+                    echo '<th>Atributo PDO</th>';
+                    echo '<th>Valor</th>';
+                    echo '</tr>';
+
                     foreach ($aAtrConexion as $nombre => $constante) {
-                        echo "PDO::ATTR_$nombre:";
+                        echo '<tr>';
+                        echo "<td>PDO::ATTR_$nombre</td>";
                         try {
-                            echo '<span style="color:green; font-weight:bold;">' . $miDB->getAttribute($constante) . "</span><br>";
+                            echo '<td style="color:green; ">' . $miDB->getAttribute($constante) . '</td>';
                         } catch (PDOException $miExceptionPDO) {
-                            echo '<p style="color:red"> <span style:"font-weight:bold">Error: </span>' . $miExceptionPDO->getMessage() . '. <br> <span class="font-weight:bold" >Código del error: </span>' . $miExceptionPDO->getCode() . "</p><br>";
+                            echo '<td style="color:red;">Error: ' . $miExceptionPDO->getMessage() . '</td>';
                         }
+                        echo '</tr>';
                     }
-                    //echo'</table>';
+                    echo '</table>';
                 } catch (PDOException $miExceptionPDO) {
                     echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.
                     unset($miDB);
                 }
-
+                
                 //Establecer la conexión en la base de datos
 
                 echo '<h2>Conexión con la base de datos con errores</h2>';
                 try {
-                    $miDB2 = new PDO($dsn, $usuarioDb, "pasa");
+                    $miDB2 = new PDO(DNS, USUARIODB, "pasa");
                     echo'<h3 style="color:blue; font-weight:bold;">Conexion establecida con exito!!!!</h3><br></br>';
                     echo'<h3>Atributos de la conexión</h3><br>';
                     //para que se vean los nombre y la constante que corresponde a cada atributo.

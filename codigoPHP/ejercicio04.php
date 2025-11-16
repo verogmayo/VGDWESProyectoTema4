@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
                 padding-left: 5px;
                 border-radius: 5px;
             }
-            
+
             button{
                 font-size: 20px;
                 background-color: grey;
@@ -52,7 +52,7 @@
             }
 
 
-            input#T02_DescDepartamento{
+            input#DescDpto{
                 width: 500px;
                 margin-right: 20px;
             }
@@ -61,8 +61,7 @@
             }
 
 
-            #T02_CodDepartamento, #T02_DescDepartamento, #T02_VolumenDeNegocio{
-                background-color:rgb(252, 248, 204);
+            #DescDpto{
                 font-weight: bold;
             }
             li{
@@ -76,8 +75,8 @@
             #T02_FechaCreacionDepartamento, #T02_FechaBajaDepartamento{
                 background-color: gainsboro;
             }
-           
-            
+
+
             table{
                 border:solid;
                 width: 80%;
@@ -124,22 +123,25 @@
             <?php
             /**
              * @author: Véronique Grué
-             * @since 06/11/2025
+             * @since 13/11/2025
              * 
              *  * Ejercicio 4
-             * * 	Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos) .
+             * * Formulario de búsqueda de departamentos por descripción (por una parte del campo DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos) .
              */
+            //CON CONSULTA PREPARADA
             //enlace para importar las librerías de validación de campos
             require_once '../core/libreriaValidacion.php';
+            //enlace para la configuración de la conexion a la base de datos
+            require_once '../config/confDBPDO.php';
 
             ///inicialización de variables
             /** @var array $aErrores Array para almacenar mensajes de error de validación. */
             $aErrores = [
-                'T02_DescDepartamento' => null
+                'DescDpto' => null
             ];
             /** @var array $aRespuestas Array para almacenar las repuestas. */
             $aRespuestas = [
-                'T02_DescDepartamento' => ''
+                'DescDpto' => ''
             ];
 
             /** @boollean boolean $entradaOK Indica si los datos de entrada son correctos o no. */
@@ -147,9 +149,9 @@
 
             //Para cada campo del formulario se valida la entrada y se actua en consecuencia
             if (isset($_REQUEST['buscar'])) {//se cumple si el boton es buscar
-               // $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
-                if (!empty($_REQUEST['T02_DescDepartamento'])) {
-                    $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
+                // $aErrores['T02_DescDepartamento'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['T02_DescDepartamento'], 255, 0, 0);
+                if (!empty($_REQUEST['DescDpto'])) {
+                    $aErrores['DescDpto'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['DescDpto'], 255, 0, 0);
                 }
 
                 //recorre el array de errores para detectar si hay alguno
@@ -158,7 +160,6 @@
                         $entradaOK = false;
                     }
                 }
-                
             } else {
                 //Si no se ha aceptado el formulario
                 $entradaOK = false;
@@ -167,54 +168,48 @@
             if ($entradaOK) {
                 //REllenamos el array de respuesta con los valores que ha introducido el usuario
 
-                $aRespuestas['T02_DescDepartamento'] = ($_REQUEST['T02_DescDepartamento']);
+                $aRespuestas['DescDpto'] = ($_REQUEST['DescDpto']);
+            }
+            //si hay algún error se vuelve a mostrar el formulario
+            ?>
+            <section>
+                <h2>Mantenimiento del Departamento.</h2>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 
-              
-            } else {
-                //si hay algún error se vuelve a mostrar el formulario
-                ?>
-                <section>
-                    <h2>Mantenimiento del Departamento.</h2>
-                    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                    <label for="DescDpto">Descripción:</label>
+                    <a style='color:red'><?php echo $aErrores['DescDpto'] ?></a>
+                    <input name="DescDpto" id="DescDpto" type="text" value="<?php echo(empty($aErrores['DescDpto'])) ? ($_REQUEST['DescDpto'] ?? '') : ''; ?>">
 
-                        <label for="T02_DescDepartamento">Descripción:</label>
-                        <a style='color:red'><?php echo $aErrores['T02_DescDepartamento'] ?></a>
-                        <input name="T02_DescDepartamento" id="T02_DescDepartamento" type="text" value="<?php echo(empty($aErrores['T02_DescDepartamento'])) ? ($_REQUEST['T02_DescDepartamento'] ?? '') : ''; ?>">
+                    <button type="submit" name="buscar" id="buscar">Buscar</button>
 
-                        <button type="submit" name="buscar" id="buscar">Buscar</button>
-                        <!--                            <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>-->
 
-                    </form>  
-                    <?php
-                }
-                ?>
+                </form>  
+
 
             </section>
             <section class="contenedorTabla">
                 <?php
-              try {
-                    // Configuracion conexión PDO
-                    $dsn = 'mysql:host=' . $_SERVER['SERVER_ADDR'] . ';dbname=DBVGDWESProyectoTema4';
-                    $usuarioDb = 'userVGDWESProyectoTema4';
-                    $pswd = 'paso';
-
-                    $miDB = new PDO($dsn, $usuarioDb, $pswd);
+                try {
+                    $miDB = new PDO(DNS, USUARIODB, PSWD);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                    // Consulta si el usuario no introduce datos
-                    if (empty($aRespuestas['T02_DescDepartamento'])) {
+                    if (empty($aRespuestas['DescDpto'])) {
                         $sql = "SELECT * FROM T_02Departamento ";
                     } else {
                         //Consulta si el usuario introduce parte o la totalidad de la descripción
-                        $aRespuestasSql = "%" . $aRespuestas['T02_DescDepartamento'] . "%";
+                        $RespuestasSql = "%" . $aRespuestas['DescDpto'] . "%";
 
-                        $sql = "SELECT * FROM T_02Departamento WHERE T02_DescDepartamento LIKE '$aRespuestasSql'";
+                        $sql = "SELECT * FROM T_02Departamento WHERE T02_DescDepartamento LIKE '$RespuestasSql'";
                     }
-                    //Se ejecuta con query
-                    $resultadoConsulta = $miDB->query($sql);
                     
-                    echo'<h3>Resultados de la busquedad</h3><br>';
-                     echo'<table>';
+                    //consulta preparada para devolver datos
+                    $consultaPreparada2 = $miDB->prepare($sql);
+                    $consultaPreparada2->execute();
+
+                    //Mostrar los registros
+                    //https://www.php.net/manual/es/pdostatement.fetch.php
+
+
+                    echo'<table>';
                     echo '<tr>';
                     echo'<th> Codigo </th>';
                     echo '<th> Fecha Creación </th>';
@@ -223,32 +218,36 @@
                     echo '<th> Volumen de Negocio</th>';
                     echo '</tr>';
 
-                    while ($aRegistroArray = $resultadoConsulta->fetch(PDO::FETCH_ASSOC)) {
+                    while ($oRegistroObject = $consultaPreparada2->fetchObject()) {
                         echo '<tr>';
-                        echo'<td> ' . $aRegistroArray['T02_CodDepartamento'] . '</td>';
-                        $oFechaCreacion = new DateTime($aRegistroArray['T02_FechaCreacionDepartamento']);
+                        echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
+                        $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
                         echo'<td> ' . $oFechaCreacion->format("d-m-Y") . '</td>';
-                        if (!is_null($aRegistroArray['T02_FechaBajaDepartamento'])) {
-                            //si no se pone la condición la fecha no es null y pone la fecha de hoy
-                            $oFechaBaja = new DateTime($aRegistroArray['T02_FechaBajaDepartamento']);
+                        if (!is_null($oRegistroObject->T02_FechaBajaDepartamento)) {
+                            //si no se pone la condición la fecha no es null
+                            $oFechaBaja = new DateTime($oRegistroObject->T02_FechaBajaDepartamento);
                             echo '<td>' . $oFechaBaja->format("d-m-Y") . '</td>';
                         } else {
                             echo '<td>Activo</td>';
                         }
-                        echo'<td> ' . $aRegistroArray['T02_DescDepartamento'] . '</td>';
-                        echo'<td> ' . number_format($aRegistroArray['T02_VolumenDeNegocio'], 2, ',', '.') . '€</td>';
+                        echo'<td> ' . $oRegistroObject->T02_DescDepartamento . '</td>';
+                        echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
                         echo '</tr>';
                     }
-                    echo'</table>';
+
+                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
+                    $numRegistros->execute();
+                    $total = $numRegistros->fetchColumn();
+                    echo '<tr>';
+                    echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
+                    echo '</table>';
                 } catch (PDOException $miExceptionPDO) {
-                    echo '<p style="color:purple; font-weight:bold;">Error en la base de datos: '
-                    . $miExceptionPDO->getMessage() . '<br>Código: '
-                    . $miExceptionPDO->getCode() . '</p>';
+                    echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     unset($miDB);
                 }
                 ?>
-                </section>
+            </section>
 
         </main>
 
@@ -256,7 +255,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-10"></time> 10-10-2025 </address>
+                        <time datetime="2025-11-13"></time> 13-11-2025 </address>
                 </div>
 
             </div>
