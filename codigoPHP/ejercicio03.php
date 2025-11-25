@@ -259,7 +259,7 @@
 
                     <label for="VolNegocioDpto">Volumen de negocio:</label>
                     <input name="VolNegocioDpto" id="VolNegocioDpto" type="text" value="<?php echo(empty($aErrores['VolNegocioDpto'])) ? ($_REQUEST['VolNegocioDpto'] ?? '') : ''; ?>">
-                    <a style='color:red'><?php echo $aErrores['VolNegocioDptoo'] ?></a>
+                    <a style='color:red'><?php echo $aErrores['VolNegocioDpto'] ?></a>
 
                     <button type="submit" name="enviar" id="enviar">Añadir</button>
                     <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
