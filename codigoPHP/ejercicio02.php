@@ -47,7 +47,8 @@
                 <?php
                 /**
                  * @author: Véronique Grué
-                 * @since 29/10/2025
+                 * @version: 1.2
+                 * @since 06/10/2025
                  * 
                  * Ejercicio 2: Mostrar el contenido de la tabla Departamento y el número de registros.
                  */
@@ -94,9 +95,8 @@
                         echo '</tr>';
                     }
                     
-                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                    $numRegistros->execute();
-                    $total = $numRegistros->fetchColumn();
+                    
+                    $total = $resultadoConsulta->rowCount();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                     echo '</table>';
@@ -116,7 +116,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-11-13"></time> 13-11-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>

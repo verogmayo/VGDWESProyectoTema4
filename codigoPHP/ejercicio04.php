@@ -204,7 +204,7 @@
                     //consulta preparada para devolver datos
                     $consultaPreparada2 = $miDB->prepare($sql);
                     $consultaPreparada2->execute();
-
+                    
                     //Mostrar los registros
                     //https://www.php.net/manual/es/pdostatement.fetch.php
 
@@ -217,8 +217,10 @@
                     echo '<th> Descripción </th>';
                     echo '<th> Volumen de Negocio</th>';
                     echo '</tr>';
-
+                    //No fucniona rowcount de PDO así que cuento los resultado con un contador
+                    
                     while ($oRegistroObject = $consultaPreparada2->fetchObject()) {
+                       
                         echo '<tr>';
                         echo'<td> ' . $oRegistroObject->T02_CodDepartamento . '</td>';
                         $oFechaCreacion = new DateTime($oRegistroObject->T02_FechaCreacionDepartamento);
@@ -234,11 +236,9 @@
                         echo'<td> ' . number_format($oRegistroObject->T02_VolumenDeNegocio, 2, ',', '.') . '€</td>';
                         echo '</tr>';
                     }
-
-                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                    $numRegistros->execute();
-                    $total = $numRegistros->fetchColumn();
-                    echo '<tr>';
+                    
+                   $total=$consultaPreparada2->rowCount();
+                   echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                     echo '</table>';
                 } catch (PDOException $miExceptionPDO) {
@@ -248,14 +248,12 @@
                 }
                 ?>
             </section>
-
         </main>
-
         <footer class="footer">
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-11-13"></time> 13-11-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>

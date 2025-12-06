@@ -23,25 +23,18 @@
                 <h3>CONTENIDO DE LOS FICHEROS EXTERNOS</h3>
                 <table>
                     <tr>
-
                         <th>Descriptción</th>
                         <th>Mostrar</th>
                         <th>Descriptción</th>
                         <th>Mostrar</th>
-
                     </tr>
                     <tr>
-
                         <td class="texto">Creación de la base de Datos y del usuario. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCreaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-
-
                         <td class="texto">Librería personal. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraMiLibreriaStatic.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
-
                     <tr>
-
                         <td class="texto">Carga de la base de Datos. </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraCargaDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="texto">Fichero de configuración PDO. </td>
@@ -53,13 +46,8 @@
                         <td class="iconos"> <a href="mostrarcodigo/muestraBorraDBVGDWESProyectoTema4.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="texto"> </td>
                         <td class="iconos"> <a href=""><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-
-
                     </tr>
-
-
                 </table>
-
                 <table>
                     <tr>
                         <th rowspan="2">Nº</th>
@@ -74,23 +62,9 @@
                         <th>Ejecutar</th>
                         <th>Mostrar</th>
                     </tr>
-                    
-                    
-
-<!--                    <tr>
-                        <th>0</th>
-                         <span class="span">text</span> 
-                        <td class="texto">Creación de la base de Datos Departamento. </td>
-                        <td class="iconos"><a href="codigoPHP/ejercicio00.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio00.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                    </tr>-->
-
                     <tr>
                         <th>1</th>
                         <!-- <span class="span">text</span> -->
-
                         <td class="texto">Conexión a la base de datos con la cuenta usuario y tratamiento de errores. </td>
                         <td class="iconos"><a href="codigoPHP/ejercicio01.php"><i class="fa-solid fa-circle-play"> </i> </a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio01.php"><i class="fa-solid fa-eye"></i> </a>  </td>
@@ -139,7 +113,7 @@
                         <td class="iconos"><a href="codigoPHP/ejercicio06.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio06.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                         <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
+                        <td class="iconos"> <a href=""><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
                     </tr>
                     <tr>
                         <th>7</th>
@@ -164,20 +138,19 @@
                         <th>9</th>
                         <td class="texto">Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio
                             GIT)</td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"><a href="codigoPHP/docs/index.html" target="_blank"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio09.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>                </tr>
+                        <td class="iconos"><a  href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio09.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>                </tr>
 
-                    <tr>
+<!--                    <tr>
                         <th>10</th>
                         <td class="texto">Aplicación resumen MtoDeDepartamentos POO y multicapa..</td>
-                      <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio10.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                        <td class="iconos"><a href=""><!--<i class="fa-solid fa-circle-play"></i>--></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><!--<i class="fa-solid fa-eye"></i>--> </a>  </td>
-                    </tr>
-
+                      <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio10.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos"><a href=""><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio13.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                    </tr>-->
                 </table>
             </section>
         </main>

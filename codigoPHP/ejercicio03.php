@@ -251,7 +251,7 @@
                     <a style='color:red'><?php echo $aErrores['CodigoDpto'] ?></a>
 
                     <br><label for="T02_FechaCreacionDepartamento">Fecha Creación :</label>
-                    <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="date" value="<?php echo date('Y-m-d'); ?>" disabled><br>
+                    <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="text" value="<?php echo (new DateTime())->format('d-m-Y'); ?>" disabled><br>
 
                     <label for="DescDpto">Descripción:</label>
                     <a style='color:red'><?php echo $aErrores['DescDpto'] ?></a>
@@ -305,9 +305,8 @@
                         echo '</tr>';
                     }
 
-                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                    $numRegistros->execute();
-                    $total = $numRegistros->fetchColumn();
+                    
+                    $total = $consultaPreparada2->rowCount();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                     echo '</table>';
@@ -327,7 +326,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-11-07"></time> 07-11-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>

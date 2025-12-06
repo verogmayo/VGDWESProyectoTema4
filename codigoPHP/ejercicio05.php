@@ -34,6 +34,10 @@
                 height: auto;
                 padding-top: 10px;
             }
+            .registro{
+                border: solid;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body>
@@ -146,9 +150,8 @@
                             echo '</tr>';
                         }
 
-                        $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                        $numRegistros->execute();
-                        $total = $numRegistros->fetchColumn();
+                       
+                        $total = $consultaPreparada2->rowCount();
                         echo '<tr>';
                         echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                         echo '</table>';
@@ -168,13 +171,12 @@
                     unset($miDB);
                 }
                 ?>
-
         </main>
         <footer class="footer">
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-10"></time> 10-10-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>
