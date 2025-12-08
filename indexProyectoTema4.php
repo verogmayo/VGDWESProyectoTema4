@@ -121,8 +121,8 @@
                             Departamento de nuestra base de datos.</td>
                         <td class="iconos"><a href="codigoPHP/ejercicio07.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
                         <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07.php"><i class="fa-solid fa-eye"></i> </a>  </td>
-                        <td class="iconos"><a href="codigoPHP/ejercicio07_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
-                        <td class="iconos"> <a href="mostrarcodigo/muestraEjercicio07_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
+                        <td class="iconos">Json<a href="codigoPHP/ejercicio07_1.php"><i class="fa-solid fa-circle-play"></i></a>  </td>
+                        <td class="iconos"> Json<a href="mostrarcodigo/muestraEjercicio07_1.php"><i class="fa-solid fa-eye"></i> </a>  </td>
                     </tr>
                     <tr>
                         <th>8</th>

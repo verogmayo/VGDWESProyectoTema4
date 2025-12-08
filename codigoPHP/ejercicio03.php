@@ -182,12 +182,13 @@
                 if (empty($aErrores['CodigoDpto'])) {
                     $sql2 = "SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$_REQUEST['CodigoDpto']}'";
                     $resultadoConsulta = $miDB->prepare($sql2);
+                    $resultadoConsulta->execute();
                     //https://www.php.net/manual/es/pdostatement.rowcount.php
                     if ($resultadoConsulta->rowCount() > 0) {
                         $aErrores['CodigoDpto'] = "Este código ya existe. ";
                     }
                 }
-                $resultadoConsulta->execute();
+                
                 $aErrores['DescDpto'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['DescDpto'], 255, 5, 1);
                 $aErrores['VolNegocioDpto'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['VolNegocioDpto'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
 

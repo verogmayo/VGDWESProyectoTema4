@@ -58,11 +58,11 @@
                  * los tres registros o no se añada ninguno. 
                  */
                 // VERSION CON CONSULTA PREPARADA
-                
+
                 require_once '../config/confDBPDO.php';
 
                 //Establecer la conexión en la base de datos
-                
+
                 echo'<h3 class="titulo">Inserción de 3 departamentos con transación</h3>';
                 //Establecer la conexión en la base de datos
 
@@ -110,16 +110,16 @@
                     }
                     $miDB->commit();
                     echo'<h3 style="color:blue; font-weight:bold;">Los 3 departamentos se han insertado correctamente!!!!</h3><br></br>';
-                    
+
                     //SECCION DE LA TABLA
                     echo' <section class="contenedorTabla">';
 
                     try {
-                        
+
                         //consulta preparada para devolver datos
                         $consultaPreparada2 = $miDB->prepare('SELECT * FROM T_02Departamento');
                         $consultaPreparada2->execute();
-                        
+
                         //Mostrar los registros
                         //https://www.php.net/manual/es/pdostatement.fetch.php
 
@@ -150,7 +150,7 @@
                             echo '</tr>';
                         }
 
-                       
+
                         $total = $consultaPreparada2->rowCount();
                         echo '<tr>';
                         echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
@@ -158,6 +158,7 @@
                     } catch (PDOException $miExceptionPDO) {
                         echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                     } finally {
+                        
                     }
 
                     echo'   </section>';
@@ -165,7 +166,6 @@
                     //si falla algo, revierte todo
                     $miDB->rollBack();
                     echo '<h3 style="color:blue; font-weight:bold;">La transacción no se ha podido completar correctamente</h3>';
-                    //echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.
                     unset($miDB);
