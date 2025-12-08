@@ -34,6 +34,10 @@
                 height: auto;
                 padding-top: 10px;
             }
+            .registro{
+                border: solid;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body>
@@ -54,11 +58,11 @@
                  * los tres registros o no se añada ninguno. 
                  */
                 // VERSION CON CONSULTA PREPARADA
-                
+
                 require_once '../config/confDBPDO.php';
 
                 //Establecer la conexión en la base de datos
-                
+
                 echo'<h3 class="titulo">Inserción de 3 departamentos con transación</h3>';
                 //Establecer la conexión en la base de datos
 
@@ -106,16 +110,16 @@
                     }
                     $miDB->commit();
                     echo'<h3 style="color:blue; font-weight:bold;">Los 3 departamentos se han insertado correctamente!!!!</h3><br></br>';
-                    
+
                     //SECCION DE LA TABLA
                     echo' <section class="contenedorTabla">';
 
                     try {
-                        
+
                         //consulta preparada para devolver datos
                         $consultaPreparada2 = $miDB->prepare('SELECT * FROM T_02Departamento');
                         $consultaPreparada2->execute();
-                        
+
                         //Mostrar los registros
                         //https://www.php.net/manual/es/pdostatement.fetch.php
 
@@ -146,15 +150,15 @@
                             echo '</tr>';
                         }
 
-                        $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                        $numRegistros->execute();
-                        $total = $numRegistros->fetchColumn();
+
+                        $total = $consultaPreparada2->rowCount();
                         echo '<tr>';
                         echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                         echo '</table>';
                     } catch (PDOException $miExceptionPDO) {
                         echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                     } finally {
+                        
                     }
 
                     echo'   </section>';
@@ -162,19 +166,17 @@
                     //si falla algo, revierte todo
                     $miDB->rollBack();
                     echo '<h3 style="color:blue; font-weight:bold;">La transacción no se ha podido completar correctamente</h3>';
-                    //echo '<p style="color:purple; font-weight:bold;">Error: ' . $miExceptionPDO->getMessage() . '<br>' . 'Código de error: ' . $miExceptionPDO->getCode();
                 } finally {
                     //mejor dentro para que se cierre en todos los casos.
                     unset($miDB);
                 }
                 ?>
-
         </main>
         <footer class="footer">
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-10-10"></time> 10-10-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>

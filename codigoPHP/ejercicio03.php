@@ -182,12 +182,13 @@
                 if (empty($aErrores['CodigoDpto'])) {
                     $sql2 = "SELECT T02_CodDepartamento FROM T_02Departamento Where T02_CodDepartamento = '{$_REQUEST['CodigoDpto']}'";
                     $resultadoConsulta = $miDB->prepare($sql2);
+                    $resultadoConsulta->execute();
                     //https://www.php.net/manual/es/pdostatement.rowcount.php
                     if ($resultadoConsulta->rowCount() > 0) {
                         $aErrores['CodigoDpto'] = "Este código ya existe. ";
                     }
                 }
-                $resultadoConsulta->execute();
+                
                 $aErrores['DescDpto'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['DescDpto'], 255, 5, 1);
                 $aErrores['VolNegocioDpto'] = miLibreriaStatic::comprobarFloatMonetarioES($_REQUEST['VolNegocioDpto'], PHP_FLOAT_MAX, -PHP_FLOAT_MAX, 1);
 
@@ -251,7 +252,7 @@
                     <a style='color:red'><?php echo $aErrores['CodigoDpto'] ?></a>
 
                     <br><label for="T02_FechaCreacionDepartamento">Fecha Creación :</label>
-                    <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="date" value="<?php echo date('Y-m-d'); ?>" disabled><br>
+                    <input name="T02_FechaCreacionDepartamento" id="T02_FechaCreacionDepartamento" type="text" value="<?php echo (new DateTime())->format('d-m-Y'); ?>" disabled><br>
 
                     <label for="DescDpto">Descripción:</label>
                     <a style='color:red'><?php echo $aErrores['DescDpto'] ?></a>
@@ -259,7 +260,7 @@
 
                     <label for="VolNegocioDpto">Volumen de negocio:</label>
                     <input name="VolNegocioDpto" id="VolNegocioDpto" type="text" value="<?php echo(empty($aErrores['VolNegocioDpto'])) ? ($_REQUEST['VolNegocioDpto'] ?? '') : ''; ?>">
-                    <a style='color:red'><?php echo $aErrores['VolNegocioDptoo'] ?></a>
+                    <a style='color:red'><?php echo $aErrores['VolNegocioDpto'] ?></a>
 
                     <button type="submit" name="enviar" id="enviar">Añadir</button>
                     <a class="cancelar" href="../indexProyectoTema4.php">Cancelar</a>
@@ -305,9 +306,8 @@
                         echo '</tr>';
                     }
 
-                    $numRegistros = $miDB->prepare('SELECT COUNT(*) FROM T_02Departamento');
-                    $numRegistros->execute();
-                    $total = $numRegistros->fetchColumn();
+                    
+                    $total = $consultaPreparada2->rowCount();
                     echo '<tr>';
                     echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                     echo '</table>';
@@ -327,7 +327,7 @@
             <div class="footerContent">
                 <div><p class="copyright">
                         2025-26 IES LOS SAUCES. &#169;Todos los derechos reservados.</p> <address><a href="../../VGDWESProyectoDWES/indexProyectoDWES.html">Véronique Grué.</a> Fecha de Actualización :
-                        <time datetime="2025-11-07"></time> 07-11-2025 </address>
+                        <time datetime="2025-12-06"></time> 06-12-2025 </address>
                 </div>
 
             </div>

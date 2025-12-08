@@ -34,6 +34,7 @@
                 height: auto;
                 padding-top: 10px;
             }
+            
         </style>
     </head>
     <body>
@@ -198,8 +199,8 @@
                          * @var PDOStatement $numRegistros Resultado de la consulta COUNT
                          * @var int $total Número total de registros
                          */
-                        $numRegistros = $miDB->query('SELECT COUNT(*) FROM T_02Departamento');
-                        $total = $numRegistros->fetchColumn();
+                        
+                        $total = $resultadoConsulta->rowCount();
                         echo '<tr>';
                         echo "<td class='registro' colspan=5><strong>Número de registros:</strong> $total</td>";
                         echo '</table>';
